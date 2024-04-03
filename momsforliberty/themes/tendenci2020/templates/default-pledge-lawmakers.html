@@ -1,0 +1,693 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load photo_tags %}
+{% load news_tags %}
+{% load article_tags %}
+{% load event_tags %}
+{% theme_extends "base.html" %}
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+
+{% block meta_description %}{{ block.super }}{% endblock %}
+
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}sub{% endblock body_classes %}
+{% block html_body %}
+
+
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  <div class="page-hdr">
+   {% if page.header_image %}
+    <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive" />
+    {% endif %}
+  </div>
+  
+  <div class="container">
+ 
+    <div class="{% block content_classes %} col-xs-12{% endblock %}">
+      
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block custom_body %}
+      <h1 class="text-center">THESE LAWMAKERS STAND WITH PARENTS</h1>
+      <div class="clearfix" style="clear:both;padding-top:35px;">
+        <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">           
+          <div class="panel panel-default">
+               <div id="heading1" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse1" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse1"> Alabama </a></h4>
+               </div>
+               <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+                  <div class="panel-body">
+                      <!--<p>Jane Doe</p> -->
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading2" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse2" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse2"> Alaska </a></h4>
+               </div>
+               <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                  <div class="panel-body">
+                     <!--<p> John Doe</p> -->
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading3" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse3" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse3"> Arizona </a></h4>
+               </div>
+               <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                  <div class="panel-body">
+                    <!--<p> Jane Doe 1</p>
+                    <p> Jane Doe 2</p>
+                    <p> John Doe 1</p> -->
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading4" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse4" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse4"> Arkansas </a></h4>
+               </div>
+               <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading5" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse5" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse5"> California </a></h4>
+               </div>
+               <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                  <div class="panel-body">
+               </div>
+              </div>   
+            </div>
+            <div class="panel panel-default">
+               <div id="heading6" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse6" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse6"> Colorado </a></h4>
+               </div>
+               <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                  <div class="panel-body">
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading7" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse7" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse7"> Connecticut </a></h4>
+               </div>
+               <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+                  <div class="panel-body">
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading8" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse8" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse8"> Delaware </a></h4>
+               </div>
+               <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+                  <div class="panel-body">
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading9" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse9" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse9"> Florida </a></h4>
+               </div>
+               <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading10" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse10" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse10"> Georgia </a></h4>
+               </div>
+               <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading11" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse11" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse11"> Hawaii </a></h4>
+               </div>
+               <div id="collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading11">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading12" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse12" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse12"> Idaho </a></h4>
+               </div>
+               <div id="collapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading12">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div><div class="panel panel-default">
+               <div id="heading13" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse13" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse13"> Illinois </a></h4>
+               </div>
+               <div id="collapse13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading13">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading14" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse14" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse14"> Indiana </a></h4>
+               </div>
+               <div id="collapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading14">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading15" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse15" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse15"> Iowa </a></h4>
+               </div>
+               <div id="collapse15" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading15">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading16" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse16" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse16"> Kansas </a></h4>
+               </div>
+               <div id="collapse16" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading16">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading17" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse17" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse17"> Kentucky </a></h4>
+               </div>
+               <div id="collapse17" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading17">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+              <div class="panel panel-default">
+               <div id="heading18" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse18" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse18"> Louisiana </a></h4>
+               </div>
+               <div id="collapse18" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading18">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading19" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse19" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse19"> Maine </a></h4>
+               </div>
+               <div id="collapse19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading19">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading20" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse20" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse20"> Maryland </a></h4>
+               </div>
+               <div id="collapse20" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading20">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading21" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse21" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse21"> Massachusetts </a></h4>
+               </div>
+               <div id="collapse21" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading21">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading22" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse22" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse22"> Michigan </a></h4>
+               </div>
+               <div id="collapse22" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading22">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading23" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse23" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse23"> Minnesota </a></h4>
+               </div>
+               <div id="collapse23" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading23">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading24" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse24" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse24"> Mississippi </a></h4>
+               </div>
+               <div id="collapse24" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading24">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading25" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse25" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse25"> Missouri </a></h4>
+               </div>
+               <div id="collapse25" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading25">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading26" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse26" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse26"> Montana </a></h4>
+               </div>
+               <div id="collapse26" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading26">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading27" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse27" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse27"> Nebraska </a></h4>
+               </div>
+               <div id="collapse27" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading27">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading28" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse28" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse28"> Nevada </a></h4>
+               </div>
+               <div id="collapse28" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading28">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading29" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse29" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse29"> New Hampshire </a></h4>
+               </div>
+               <div id="collapse29" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading29">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading30" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse30" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse30"> New Jersey </a></h4>
+               </div>
+               <div id="collapse30" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading30">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading31" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse31" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse31"> New Mexico </a></h4>
+               </div>
+               <div id="collapse31" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading31">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading32" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse32" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse32"> New York </a></h4>
+               </div>
+               <div id="collapse32" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading32">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading33" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse33" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse33"> North Carolina </a></h4>
+               </div>
+               <div id="collapse33" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading33">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading34" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse34" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse34"> North Dakota </a></h4>
+               </div>
+               <div id="collapse34" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading34">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading35" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse35" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse35"> Ohio </a></h4>
+               </div>
+               <div id="collapse35" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading35">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading36"class="panel-heading" role="tab">
+                 <h4 class="panel-title"><a class="collapsed" href="#collapse36" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse36"> Oklahoma </a></h4>
+               </div>
+               <div id="collapse36" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading36">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading37" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse37" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse37"> Oregon </a></h4>
+               </div>
+               <div id="collapse37" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading37">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading38" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse38" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse38"> Pennsylvania </a></h4>
+               </div>
+               <div id="collapse38" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading38">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading39" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse39" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse39"> Rhode Island </a></h4>
+               </div>
+               <div id="collapse39" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading39">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading40" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse40" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse40"> South Carolina </a></h4>
+               </div>
+               <div id="collapse40" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading40">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading41" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse41" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse41"> South Dakota </a></h4>
+               </div>
+               <div id="collapse41" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading41">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading42" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse42" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse42"> Tennessee </a></h4>
+               </div>
+               <div id="collapse42" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading42">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading43" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse43" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse43"> Texas </a></h4>
+               </div>
+               <div id="collapse43" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading43">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading44" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse44" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse44"> Utah </a></h4>
+               </div>
+               <div id="collapse44" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading44">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading45" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse45" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse45"> Vermont </a></h4>
+               </div>
+               <div id="collapse45" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading45">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading46" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse46" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse46"> Virginia </a></h4>
+               </div>
+               <div id="collapse46" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading46">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading47" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse47" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse47"> Washington </a></h4>
+               </div>
+               <div id="collapse47" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading47">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading48" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse48" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse48"> West Virginia </a></h4>
+               </div>
+               <div id="collapse48" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading48">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading49" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse49" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse49"> Wisconsin </a></h4>
+               </div>
+               <div id="collapse49" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading49">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading50" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse50" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse50"> Wyoming </a></h4>
+               </div>
+               <div id="collapse50" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading50">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+              
+              </div><!-- end accordion -->
+      </div>
+      {% endblock custom_body %}
+       
+    </div> <!-- close content -->
+    
+    
+  </div> <!-- close container -->
+</div> <!-- close page-top -->
+
+<footer class="{% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+# Ignore all local development files
+schema.xml
+django
+*.db
+
+# Ignore django cache
+cache/
+index/
+
+# Ignore en_US message file
+tendenci/locale/en_US/
+
+# Ignore OS files
+_notes/
+
+# Ignore all dotfiles...
+.*
+
+# Ignore all pyc file
+__pycache__/
+*.pyc
+
+# except for .gitignore and .readthedocs.yml
+!/.gitignore
+!.readthedocs.yml
+
+# except for .tx/config
+!/.tx/
+
+# except for .travis.yml
+!/.travis.yml
+
+# except for .flake8
+!/.flake8
+
+# Ignore docs build files
+docs/build/
+docs/local/
+
+# Ignore build directories and egg
+/build
+/dist
+*.egg-info
+
+venv/

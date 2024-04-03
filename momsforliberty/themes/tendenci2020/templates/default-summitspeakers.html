@@ -1,0 +1,95 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %} {% load base_tags %} {% load theme_tags %} {% load photo_tags %} {% load news_tags %} {% load article_tags %} {% load event_tags %} {% load cache %} {% theme_extends "base.html" %}
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %} {% block meta_description %}{{ block.super }}{% endblock %} {% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %} {% block body_classes %}sub{% endblock body_classes %} {% block html_body %}
+
+
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}
+<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+    <div class="page-hdr">
+        {% if page.header_image %}
+        <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive" /> {% endif %}
+    </div>
+
+    <div class="container">
+
+        <div class="{% block content_classes %} col-xs-12{% endblock %}">
+
+            {% block content_messages %} {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %} {% endblock %}
+
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+                <!-- begin: carousel-inner -->
+                <div class="carousel-inner" id="rotator_inner">
+                    {% cache 36000 stories_rotator_home %} {% list_stories as stories_list limit=3 tags="rotator" quality="90" data-interval="5000" %}
+
+                    <!-- begin: item active -->
+                    {% for story in stories_list %}
+                    <div class="item {% if forloop.first %} active {% endif %}">
+
+                        {% if story.full_story_link %}
+                        <a href="{{ story.full_story_link }}">
+                            <div class="grad-bg"></div>
+                            <img class="img-responsive" src="{{ story.photo.url }}" alt="{{ story.title }}" style="object-position:center;">
+                        </a>
+                        {% else %}
+                        <div class="grad-bg"></div>
+                        <img class="img-responsive" src="{{ story.photo.url }}" alt="{{ story.title }}" style="object-position:center;"> {% endif %}
+
+                        <!-- begin: carousel-caption -->
+                        <div class="carousel-caption">
+                            {% if story.full_story_link %}
+                            <a href="{{ story.full_story_link }}">
+                                <div class="container-fluid">
+                                    <h2>{{ story.title }}</h2>
+                                </div>
+                            </a>
+                            {% else %}
+                            <div class="container-fluid">
+                                <h2>{{ story.title }}</h2>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="story-cta">
+                            <div class="story-cta-btn1">
+                                <a class="btn btn-primary" href="/memberships/applications/membership-application/">JOIN THE FIGHT</a>
+                            </div>
+                            <div class="story-cta-btn2">
+                                <a class="btn btn-default" href="/donate-now">DONATE</a>
+                            </div>
+                        </div>
+                        <!-- end: carousel-caption -->
+
+                    </div>
+                    <!-- end: item active -->
+                    {% endfor %} {% endcache %}
+                </div>
+                <!-- end: carousel-inner -->
+                {% endblock %}
+
+            </div>
+            <!-- close content -->
+
+
+        </div>
+        <!-- close container -->
+    </div>
+    <!-- close page-top -->
+
+    <footer class="{% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+        {% block footer %} {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %} {% endblock %}
+    </footer>
+
+    {% endblock %}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​

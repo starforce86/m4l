@@ -1,0 +1,58 @@
+{% extends base_template %}
+{% load base_filters %}
+{% load bootstrap_pagination_tags %}
+{% load perm_tags %}
+{% load profile_tags %}
+{% load search_tags %}
+
+
+{% block title %}{% trans "People Search" %}{% endblock %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/iconrow.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/profiles.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}" type="text/css">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="{% static 'timepicker/timepicker.css' %}">
+
+{% endblock %}
+
+{% block content %}
+    <div class="t">
+        <h1>{% if memberships_search  %}{% trans "Members Search" %}{% else %}{% trans "People Search" %}{% endif %}</h1>
+
+        {{ MODULE_USERS_USERSEARCHSTATEMENT }}
+
+        {% autopaginate profiles 10 %}
+
+        {% profile_search %}
+
+        {% if profiles %}
+            <span><em>{{ paginator.count }} Pe{{ paginator.count|pluralize:"rson,ople" }} {% trans "Found" %}</em></span>
+        {% else %}
+            <p>{% trans "Sorry, we didn't find anything for your search."%}</p>
+        {% endif %}
+
+        <div class="profiles-wrap">
+            {% for profile in profiles %}
+                {% search_result profile %}
+            {% empty %}
+            {% endfor %}
+        </div>
+
+        {% paginate %}
+    </div>
+{% endblock %}
+
+
+{% block extra_body %}
+{{ block.super }}
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="{% static 'timepicker/timepicker.js' %}" type="text/javascript"></script>
+  <script type="text/javascript">
+  (function($) {
+      $(".datepicker").datepicker({dateFormat: 'yy-mm-dd'});
+  })(jQuery);
+  </script>
+{% endblock %}

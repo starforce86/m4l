@@ -1,0 +1,35 @@
+name: Deploy | Dev & Staging | No Media & Code
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run deployment'
+        type: environment
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: 
+      name: ${{ inputs.environment }}
+    steps:
+    - name: Deploy Code
+      uses: appleboy/ssh-action@v0.1.7
+      env:
+        BRANCH_CHECKOUT: ${{ github.ref_name }}
+      with:
+        host: ${{ secrets.HOSTNAME }}
+        username: ${{ secrets.USER_NAME }}
+        key: ${{ secrets.ZADARA_PRIVATE_KEY }}
+        passphrase: ${{ secrets.ZADARA_PASSPHRASE }}
+        envs: BRANCH_CHECKOUT
+        script: |
+          echo $BRANCH_CHECKOUT
+          sudo rm -rf momsforliberty-web
+          sudo git clone git@github.com:fabiuslabs/momsforliberty-web.git
+          cd momsforliberty-web/
+          sudo git checkout $BRANCH_CHECKOUT
+        
+      
+        

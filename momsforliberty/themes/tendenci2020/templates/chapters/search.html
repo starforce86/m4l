@@ -1,0 +1,75 @@
+{% extends "default-chapter-search.html" %}
+
+{% load search_tags %}
+{% load pagination_tags %}
+{% load chapter_tags %}
+{% load box_tags %}
+
+{% block extra_head %}
+    {{ block.super }}
+<link rel="alternate" type="application/rss+xml" title="{% trans 'Chapters' %}" href="{% url "chapters.feed" %}" />
+
+<!-- USA County MAP code -->
+<script src="/themes/tendenci2020/media/mapdata.js"></script>     
+<script src="/themes/tendenci2020/media/countymap.js"></script> 
+<script>
+{% include "map_search.js" %}
+ </script>
+<script> simplemaps_search.map = simplemaps_countymap; </script> 
+<link rel="stylesheet" href="/themes/tendenci2020/media/chosen.min.css"> 
+<script src="/themes/tendenci2020/media/chosen.jquery.js"></script>
+
+<style>
+  .t-search-form .form-group{
+    margin-bottom: 15px !important;
+  }
+  #s-chapter-search {
+  clear:both;
+  margin: 15px 0;
+  position: absolute;
+  margin-top: -155px;
+  z-index: 1000;
+  right: 10%;
+  }
+ @media (max-width:768px){
+  #s-chapter-search {
+  position: relative;
+  margin-top: unset;
+  right: unset;
+  }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+{% autopaginate chapters 10 %}
+<div id="chapters">
+  
+  <div class="page-header">
+    <h1>{% trans 'Find a Chapter Near You' %}</h1>
+  </div>
+
+    <div class="chapters-wrap clearfix">
+          
+      <div>{% box 23 %}</div>
+      <br />
+      <div id="map"></div>
+   <br><br>
+    
+       <div id="s-chapter-search"> {% chapter_search %} </div>
+      
+    <div class="e-search-results row" style="clear:both; overflow:hidden;"> 
+      {% if form.county.value %}
+    {% for chapter in chapters %}
+        {% search_result chapter %}
+    {% empty %}
+        <p>{% trans '0 chapters found' %}</p>
+    {% endfor %}
+      {% endif %}
+      </div>
+  
+        <br />
+  </div>
+    {% comment %}{% paginate %}{% endcomment %}
+</div>
+{% endblock %}

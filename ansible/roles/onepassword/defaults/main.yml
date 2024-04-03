@@ -1,0 +1,11 @@
+---
+
+user: "{{ ansible_ssh_user }}"
+user_home: "/home/{{ user }}"
+
+op_cli_version: v2.14.0
+op_cli_src_url: "https://cache.agilebits.com/dist/1P/op2/pkg/{{ op_cli_version }}/op_linux_amd64_{{ op_cli_version }}.zip"
+
+op_connect_host: fabiuslabs.1password.com
+op_vault_id: wusp2lmpsngntoclph2p7yavbi
+write_files: []

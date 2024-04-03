@@ -1,0 +1,30 @@
+name: Deploy | Dev & Staging | Media & Code
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run deployment'
+        type: environment
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: 
+      name: ${{ inputs.environment }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Copy the Media Files
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.HOSTNAME }}
+        username: ${{ secrets.USER_NAME }}
+        key: ${{ secrets.ZADARA_PRIVATE_KEY }}
+        passphrase: ${{ secrets.ZADARA_PASSPHRASE }}
+        script: |
+          whoami
+          ls -al
+        
+      
+        

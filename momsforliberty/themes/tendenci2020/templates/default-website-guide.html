@@ -1,0 +1,200 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load photo_tags %}
+{% load news_tags %}
+{% load article_tags %}
+{% load event_tags %}
+{% theme_extends "base.html" %}
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+
+{% block meta_description %}{{ block.super }}{% endblock %}
+
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}sub{% endblock body_classes %}
+{% block html_body %}
+
+
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  <div class="page-hdr">
+   {% if page.header_image %}
+    <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive" />
+    {% endif %}
+  </div>
+  
+  <div class="container">
+ 
+    <div class="{% block content_classes %} col-xs-12{% endblock %}">
+      
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block custom_body %}
+      <h1 class="text-center">CHAPTER WEBSITE GUIDE</h1>
+      <div class="clearfix" style="clear:both;padding-top:35px;">
+        <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">           
+          
+                      <div class="panel panel-default">
+               <div id="heading2" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse1" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse1"> Step #1: Welcome to Our Site!</a></h4>
+               </div>
+               <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                  <div class="panel-body">
+                     <body>
+                       <center><iframe width="560" height="315" src="https://www.youtube.com/embed/OnRCNPc10uo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+<h1>Check List</h1>
+
+<ul>
+  <li>Reset Password & Login</li>
+  <li>Update Profile Info & Time Zone</li>
+  <li>Upload Profile Picture</li>
+  <li>Explore Chapter Chair Portal
+  <ul>
+  <li>Locate documents & where to submit them
+  <li>Locate Chapter Events
+  </ul>
+  <li>Explore "Apps" menu
+  <li>Navigate to Chapter page
+  <ul><li>Bookmark Chapter Page</ul>
+
+</body>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading1" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse2" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse2"> Step #2: Get Live </a></h4>
+               </div>
+               <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+                  <div class="panel-body">
+                    <body>
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/3e3TKA8CEYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+<h1>Check List</h1>
+
+<ul>
+  <li>Update About Us</li>
+  <ul>
+  <li>Chapters: Edit Chapter: Content - Add chapter specific info, chapter leadership, committees, school  board info, etc.</ul>
+  <li>Add Payment Link</li>
+  <ul>
+  <li>Chapters: Edit Chapter: Sponsors - right click the text "donate to this chapter" click link, and paste your payment link in the URL box.
+  <li>Chapters: Edit Chapter: External Payment Link - paste your payment link in the box
+  </ul>
+  <li>Edit Join Form
+  <ul>
+  <li>Chapters: Customize App Fields - update district options, separated by commas
+  <li>Chapters: Set/Update Prices - update pricing for regular membership dues
+  </ul>
+  <li>Upload Files
+  <ul>
+  <li>Apps: File. File: Add a File - At a minimum add your code of conduct, but I recommend adding your bylaws and any other documents relevant to your chapter
+  </ul>
+  <li>At this point, email Jade@MomsForLiberty.org, say you're ready to go active and attach your newsletter/membership list.
+  <ul><li>After you membership list is uploaded, you'll need to add your Chapter Leadership.
+  <ul><li>Chapters: Edit Chapter: Add officer - add your core four (Chair, V Chair, Secretary, Treasuer)
+  </ul></ul>
+
+</body>
+</html>
+
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading2" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse3" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse3"> Step #3: Dynamic Content </a></h4>
+               </div>
+               <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                  <div class="panel-body">
+                     <body>
+                       <center><h1>Photos</h1>
+                       <iframe width="560" height="315" src="https://www.youtube.com/embed/qlYK5HMPH8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                       <h1>Video</h1>
+                       <iframe width="560" height="315" src="https://www.youtube.com/embed/6iKGp87lXus" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                       <h1>News</h1>
+                       <iframe width="560" height="315" src="https://www.youtube.com/embed/5CGXkwmO7B0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+</body>
+                  </div>
+               </div>
+            </div>
+    <div class="panel panel-default">
+               <div id="heading3" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse4" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse4"> Step #4: Events </a></h4>
+               </div>
+               <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                  <div class="panel-body">
+                    <h1>Check List</h1>
+                    <ul><li>Add a general meeting
+                      <li>Add a school board meeting
+                        <li>Other ideas: committee meeting, social/networking, local event
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading3" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse5" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse5"> Step #5: Membership Module </a></h4>
+               </div>
+               <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                  <div class="panel-body">
+ <body><center><iframe width="560" height="315" src="https://www.youtube.com/embed/DWM5pk3-t4k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+                    <h1>Check List</h1>
+                    <ul><li>View Members & Info
+                      <li>Sort Members
+                        <li>Approve/Deny Members
+                          <li>Email Members
+                  </div>
+               </div>
+            </div>
+    <div class="panel panel-default">
+               <div id="heading3" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse6" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse6"> Step #6: Newsletters </a></h4>
+               </div>
+               <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                  <div class="panel-body">
+                    <h1>Check List</h1>
+                  </div>
+               </div>
+            </div>
+                <div class="panel panel-default">
+               <div id="heading2" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse7" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse7"> Frequently Asked Questions </a></h4>
+               </div>
+               <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                  <div class="panel-body">
+                     <h1>Check List</h1>
+                  </div>
+               </div>
+            </div>
+           
+                 
+              </div><!-- end accordion -->
+      </div>
+      {% endblock custom_body %}
+       
+    </div> <!-- close content -->
+    
+    
+  </div> <!-- close container -->
+</div> <!-- close page-top -->
+
+<footer class="{% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}

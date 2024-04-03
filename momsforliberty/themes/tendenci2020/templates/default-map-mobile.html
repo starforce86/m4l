@@ -1,0 +1,76 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load photo_tags %}
+{% load news_tags %}
+{% load article_tags %}
+{% load event_tags %}
+{% theme_extends "base.html" %}
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+{% block meta_description %}{{ block.super }}{% endblock %}
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}sub{% endblock body_classes %}
+{% block html_body %}
+
+
+<link rel="stylesheet" href="/themes/tendenci2020/media/chosen.min.css"> 
+
+
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "chapter-sample-hdr.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  <div class="page-hdr">
+   {% if page.header_image %}
+    <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive" />
+    {% endif %} 
+  </div>
+  
+  <div class="container">
+ 
+    <div class="{% block content_classes %}col-xs-12{% endblock %}">
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block content %}
+      {# Main content goes here #}
+      {% endblock %}
+       
+      <div style="clear:both">
+      <br/>
+      <select id="state_list" style="max-width:100%; margin:20px auto 0 auto;display:table;" tabindex="0"></select>
+      <br/><br/>
+      <div id="map" style="height:100%;"></div>
+      </div>
+    </div> <!-- close content -->
+    
+  </div> <!-- close container -->
+</div> <!-- close #page-top -->
+
+<footer class="{% block footer_classes %}{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}
+
+{% block extra_body %}
+{{ super.block }}
+<script src="/themes/tendenci2020/media/mapdata.js"></script>     
+<script src="/themes/tendenci2020/media/countymap.js"></script>
+<script src="/themes/tendenci2020/media/search.js"></script>  
+<script> simplemaps_search.map = simplemaps_countymap; </script> 
+<script src="/themes/tendenci2020/media/chosen.jquery.js"></script>
+{% endblock extra_body %}

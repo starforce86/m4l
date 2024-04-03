@@ -1,0 +1,110 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed) =============== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load nav_tags %}
+{% load forms_tags %}
+{% theme_extends "base.html" %}
+
+<!-- Meta Tags (for optimal SEO) ======================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+
+{% block meta_description %}{{ block.super }}{% endblock %}
+
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body =========================== -->
+{% block body_ids %}chapters-cust{% endblock body_ids %}
+{% block body_classes %}sub{% endblock body_classes %}
+
+{% if request.path == "/chapters/" %}
+{% block top_bar %}
+{% if request.user.is_authenticated %}
+    {% include "chapters/top_nav.html" %}
+    {% if request.user.impersonated_user and request.user.impersonated_user.is_superuser or request.user.is_superuser %}
+        {% if request.session.theme %}
+            {% include "themes/theme_top.html" %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% endblock %}
+{% endif %}
+
+{% block html_body %}
+
+<!-- Header Starts ============================ -->
+{% theme_include "header-chapter.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  
+    <div class="chapter-featured-image" data-aos="fade-down" data-aos-duration="2000">
+    {% if chapter.featured_image %}
+       <img src="{% url 'file' chapter.featured_image.id %}" alt="{{ chapter.title }}" title="{{ chapter.title  }}">
+      {% else %}
+    <img src="/media/files/chapter/126b079d/kid-holds-flag-liberty_q5ltmaE.jpeg" alt="{{ chapter.title }}" title="{{ chapter.title  }}">
+      {% endif %}  
+  </div>
+    
+ 
+  <div class="container">
+    <div class="{% block content_classes %} col-sm-10 col-sm-offset-1 {% endblock %}">
+    <div class="page-header">
+      <h1 class="text-center"><span>{{ chapter.title }} county, chapter</span> of <em>Moms for Liberty</em></h1>
+    </div>
+      
+    <div id="chpt-top-buttons" class="row"> 
+    <div id="chapt-nt-hd" class="chpt-top-btn1">  
+     <div class="chapter-sponsors-hdr">
+      {% if chapter.sponsors %}
+      <p>{{ chapter.sponsors|safe }}</p>
+      {% endif %}
+    </div> 
+    </div><!-- end #chapt-nt-hd -->  
+      {% if MODULE_CHAPTERS_MEMBERSHIPSENABLED %}  
+      {% if chapter and not is_chapter_member %}
+    <div id="chapt-nt-hd2" class="chpt-top-btn2">
+      <div class="chapt-forms-hdr"> 
+      <div class="text-center"> 
+         <a href="{% url 'chapters.membership_add' chapter.id %}" class="btn btn-md btn-primary">Join this Chapter Now</a>
+      </div>  
+      </div>
+    </div><!-- end #chapt-nt-hd2 -->
+      {% endif %} 
+      {% endif %} 
+    </div> <!-- end .row #chpt-top-buttons --> 
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block content %}
+      {# Main content goes here #}
+    
+      {% endblock %}
+      
+    </div> <!-- close content -->
+</div> <!-- close container -->
+</div> <!-- close page-top -->
+
+<footer class="bg-primary {% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer-chapters.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}
+{% block extra_body %}
+{{ super.block }}
+<script>
+/* Helps remove first of kind id donate-cahpter */  
+function myFunction() {
+  var item = document.querySelector(".chapter-sponsors-hdr #donate-chapter");
+  item.parentNode.removeChild(item);
+}
+</script>
+<script>
+function myFunction() {
+  var element = document.getElementByTagName(".txt-editor-nav>ul:hover>ul a");
+  element.classList.add("dropdown-toggle");
+}
+</script>
+{% endblock extra_body %}

@@ -1,0 +1,137 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load nav_tags %}
+{% load category_tags %}
+{% load news_tags %}
+{% load perm_tags %}
+{% load bootstrap_pagination_tags %}
+{% theme_extends "base.html" %}
+
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+
+{% block meta_description %}{{ block.super }}{% endblock %}
+
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}news-press{% endblock body_ids %}
+{% block body_classes %}sub{% endblock body_classes %}
+
+{% if request.path == "/news/" %}
+{% block top_bar %}
+    {% if request.user.is_authenticated %}
+        {% include "news/top_nav.html" %}
+        {% if request.user.impersonated_user and request.user.impersonated_user.is_superuser or request.user.is_superuser  %}
+            {% if request.session.theme %}
+                {% include "themes/theme_top.html" %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+{% endif %}
+
+{% block html_body %}
+
+
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  
+   <div class="page-hdr">
+          {% if page.header_image %}
+            <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive" />
+          {% endif %}
+          {% if page.title %}
+     <div class="container">
+          <h1>{{ page.title }}</h1>
+          {% endif %}   
+       </div>
+          </div>
+  <br>
+  
+  <div class="container">
+ 
+    <div class="{% block content_classes %} col-xs-12{% endblock %}">
+      
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block custom_body %}
+      
+     {% list_news as news_list limit=999 tags="summit22" %}  
+     {% autopaginate news_list 9 %}
+      <div class="t">   
+        <div class="page-wrap">
+<div style="text-align:center;margin:auto;" class="well" >Click here to view the Strategy sessions from the National Summit.<br>(These sessions are for members only. To become a member, <a href="https://momsforliberty.org/memberships/applications/membership-application/" target="_blank" rel="noopener">click here</a>.)<br><br><p style="text-align: center;"><a class="btn btn-primary" href="https://momsforliberty.org/summit22-breakout-sessions/">Strategy Sessions</a></p></div>
+<br />
+<div id="news-list-cont">
+        
+           <!-- {% comment %} {{ page.content|safe }} {% endcomment %} -->
+           
+          <ul class="list-unstyled">    
+            {% for news_item in news_list %}    
+            <li>
+
+             <!-- news-image -->
+              {% if news_item.thumbnail %}
+              
+            <div class="news-item-thumbnail">
+              <a href="{{ news_item.get_absolute_url }}">
+            <img class="img" src="{% image_url news_item.thumbnail %}"
+              alt="{{ news_item.headline|striptags|safe }}"
+              style="width:100%;height:auto;"/>
+                </a>
+            </div>
+       
+              {% else %}
+            <div class="news-item-thumbnail-auto">
+              <a href="{{ news_item.get_absolute_url }}">
+            <img src="{% static 'quince.jpg' %}"
+              style="width:100%;height:auto;"/>
+                 </a>
+            </div>
+              
+              {% endif %}
+          <!-- end news-image --> 
+              <a href="{{ news_item.get_absolute_url }}">
+              <h3 class="panel-title"><center>{{ news_item.headline|truncatechars:70|safe }}</center></h3>
+               </a>
+           <!--begin read-more -->   
+              <!--<a href="{{ news_item.get_absolute_url }}">
+              <div class="n-read-more" style="padding: 10px;">&nbsp;&nbsp;&nbsp;Read More</div>
+              </a>
+            
+          </ul> -->
+             <!--end read-more -->  
+            </li>
+            {% endfor %}
+          </div>   
+          {% include "pages/meta.html" %}
+        </div><!-- end .page-wrap -->
+        
+      </div><!-- end .t -->
+      {% paginate %}
+      {% endblock custom_body %}
+      
+    </div> <!-- close content -->
+    
+  </div> <!-- close container -->
+</div> <!-- close page-top -->
+
+<footer class="bg-primary {% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}

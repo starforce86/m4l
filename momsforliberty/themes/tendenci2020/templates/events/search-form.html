@@ -1,0 +1,104 @@
+<form class="search-form form-horizontal" action="{% if past %}{% url "event.past_search" %}{% else %}{% url "event.search" %}{% endif %}" method="get">
+
+<div id="events-search-fields" class="collapse in">
+ <!-- {% comment %}
+<div class="row">
+    <div class="col-sm-6 form-group">
+    <label for="id_start_dt" class="col-sm-4 control-label">{{ form.start_dt.label }}</label>
+      <div class="col-sm-8">
+         {{ form.start_dt }}
+         </div>
+    </div>
+  <div class="col-sm-6 form-group">
+    <label for="id_end_dt" class="col-sm-4 control-label">{{ form.end_dt.label }}</label>
+      <div class="col-sm-8">
+         {{ form.end_dt }}
+         </div>
+    </div>
+</div>
+    {% endcomment %} -->
+<!-- {% comment %}
+<div class="row">
+
+    <div class="col-sm-12 form-group">
+     <label for="id_event_group" class="col-sm-4 control-label">{{ form.event_group.label }}</label>
+       <div class="col-sm-8">
+       {{ form.event_group }}
+       </div>
+    </div>
+  
+     <div class="col-sm-12 form-group">
+    <label for="id_event_type" class="col-sm-4 control-label">{{ form.event_type.label }}</label>
+      <div class="col-sm-8">
+        {{ form.event_type }}
+        </div>
+    </div>
+ 
+</div>
+{% endcomment %} -->
+
+<div class="row">
+  <div class="col-sm-12 form-group">
+    <label for="id_event_place_type" class="col-sm-4 control-label">{{ form.event_place_type.label }}</label>
+       <div class="col-sm-8">
+       <select name="event_place_type" class="form-control-custom" id="id_event_place_type">
+          <option value="in_person" {% if request.GET.event_place_type == "in_person" %}selected=""{% endif %}>In person</option>
+          <option value="virtual" {% if request.GET.event_place_type == "virtual" %}selected=""{% endif %}>Virtual</option>
+        </select>
+       </div>
+   </div>
+</div>
+
+<div class="row" id="state_national_wrap">
+  <div class="col-sm-12 form-group">
+    <label for="id_state_national" class="col-sm-4 control-label">State or National</label>
+       <div class="col-sm-8">
+       <select name="state_national" class="form-control-custom" id="id_state_national">
+          <option value="is_state" {% if not request.GET.national_only %}selected=""{% endif %}>State</option>
+          <option value="is_national" {% if request.GET.national_only %}selected=""{% endif %}>National</option>
+        </select>
+        <input type="checkbox" name="national_only" class="hide" id="id_national_only" {% if request.GET.national_only %}checked{% endif %}>
+       </div>
+   </div>
+</div>
+
+<div class="row" id="state_wrap">
+     <div class="col-sm-12 form-group">
+       <div class="col-sm-8">
+       {{ form.state }}
+       </div>
+    </div>
+</div>
+  
+<div class="row" id="search_category_wrap">
+     <div class="col-md-12 col-sm-12 form-group">
+       <div class="col-sm-8">
+        <input type="text" name="search_category" value="place__county__icontains" class="hide" id="id_search_category">
+        <input type="text" name="q" class="form-control-custom" id="id_q" value="{% if request.GET.q %}{{ request.GET.q }}{% endif %}" placeholder="Enter a County Name">
+      </div>
+     </div>
+</div>
+
+<div class="row">
+     <div class="col-md-12 col-sm-12 form-group">
+        <input class="btn btn-primary" type="submit" name="search" value="{% trans 'Search' %}" />
+      </div>
+</div>
+
+  
+{% if form.registration %}  
+<div class="row">
+  <div class="col-sm-12 form-group">
+        <div class="checkbox">
+          <label>
+            {{ form.registration }} {{ form.registration.label }}
+          </label>
+       </div>
+    </div>
+</div>
+{% endif %}
+
+</div>
+
+<!-- removed "hide search form" -->
+</form>

@@ -1,0 +1,96 @@
+# Mom's For Liberty Tendenci Project
+
+In this project we have the M4L code base. The code utilizes the Tendenci package from https://tendenci.readthedocs.io/en/latest/. In order for us to make changes to the tendenci code base, we are installing it locally it's own python package and then coding against that for the website.
+
+## Local Development
+
+When running locally, you can use a few different approaches. Using Docker might make it easier in order to have a stand alone place to run code. For your convenience there is a docker compose file for postgres as well as maildev to test mail functionality.
+
+### Virtual Environment
+
+1. Install [pyenv](https://github.com/pyenv/pyenv)
+2. Install the right version of python: `pyenv install $(< .python-version)`
+3. Create your virtual environment: `make venv`
+4. Activate your virtual environment: `source .venv/bin/activate`
+
+### Docker
+
+1. Run `make compose-dev`
+
+#### Setup database from scratch
+
+Run the following commands to setup a local environment. These commands should only be ran on a fresh deployment or fresh local dev environment.
+
+**These commands must be run inside the Docker Compose containers using:**
+
+```sh
+make dev-run CMD=bash
+```
+
+```sh
+python3 manage.py initial_migrate
+python3 manage.py deploy
+
+python3 manage.py load_tendenci_defaults
+python3 manage.py update_dashboard_stats
+python3 manage.py rebuild_index --noinput
+```
+
+Also if you need to login when developing locally, you can create a superuser by the following
+
+```sh
+python3 manage.py createsuperuser
+```
+
+You can also run the following commands to load data that is from the M4L Prod YML. (i.e. the same navbar as Prod).
+
+```sh
+python3 manage.py loaddata ./conf/fixtures/m4l_initial_entities.json
+python3 manage.py loaddata ./conf/fixtures/m4l_initial_navs.json
+```
+
+#### Setup database from a dump
+
+Copy the dump file to `postgresql/seed.dump`, then stop everything and seed the database:
+
+```sh
+docker compose down
+make db-seed
+```
+
+## SSH to the development server
+
+Export the [private SSH key for the server from 1Password](https://start.1password.com/open/i?a=4J47YIAZN5CGPAQSILVFR65TDQ&v=wusp2lmpsngntoclph2p7yavbi&i=bs4cqunbqsjjftkzrsr3xp5wzi&h=fabiuslabs.1password.com) and move it to `~/.ssh/m4l-prod.pem`.
+
+Create an entry in your `~/.ssh/config` for the server:
+
+```
+Host m4l-dev
+        HostName 38.77.226.93
+        User ubuntu
+        # Exported from 1Password:
+        # https://start.1password.com/open/i?a=4J47YIAZN5CGPAQSILVFR65TDQ&v=wusp2lmpsngntoclph2p7yavbi&i=bs4cqunbqsjjftkzrsr3xp5wzi&h=fabiuslabs.1password.com
+        IdentityFile ~/.ssh/m4l-prod.pem
+        IdentitiesOnly yes
+```
+
+You can connect to the database using SSH local port-forwarding:
+
+```bash
+ssh -L 5432:localhost:5432 -N -v m4l-dev
+```
+
+## Playwright Testing
+
+We can now run playwright tests using docker. The DockerFile uses the Playwright image and adds the pytest plugin for playwright. This lets  The make command is `make test-run` this will open up a terminal with bash.
+
+To test you can run `pytest`.
+
+### Writing Tests
+
+The folder to write tests in is `playright/tests/`. Make to use the `test_` prefix before each test file to make sure the test runner knows to pick up these up to run. You can also utilize environment variables when testing in order for things like user names and passwords to login as different roles.
+
+TODO:
+
+- [x] Make sure the initial data being loaded is from M4L.
+- Make sure deployment from GitHub Actions works.

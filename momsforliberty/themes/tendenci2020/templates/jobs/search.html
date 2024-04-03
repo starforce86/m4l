@@ -1,0 +1,85 @@
+{% extends "jobs/base.html" %}
+ {% load base_tags %}
+ {% load bootstrap_pagination_tags %}
+ {% load job_tags %}
+ {% load perm_tags %}
+ {% load search_tags %}
+ 
+ 
+ {% block title %}{% spaceless %}
+     {% if MODULE_JOBS_LABEL_PLURAL %}{% blocktrans with label_plural=MODULE_JOBS_LABEL_PLURAL %}{{ label_plural }} List{% endblocktrans %}{% else %}{% trans "Jobs List" %}{% endif %} - {{ block.super }}
+ {% endspaceless %}{% endblock %}
+ 
+ {% block extra_head %}
+     {{ block.super }}
+     <link rel="alternate" type="application/rss+xml" title="{% trans 'Latest' %} {% firstof MODULE_JOBS_LABEL_PLURAL trans 'Jobs' %}" href="{% url 'job.feed' %}">
+ {% endblock %}
+ 
+ {% block content_classes %}{{ block.super }} t-search-view{% endblock %}
+ 
+{% block content %}
+     <h1>
+         Careers
+     </h1>
+     <div>
+       <img src="/media/files/files/bfedf474/m4l-careers.png" alt="Moms for liberty careers" title="Moms for liberty careers" class="img-responsive" />
+     </div>
+     <div style="margin: 30px 0">Together, we are having impact. <br><br>
+Moms for Liberty is a grassroots organization that was founded in January 2021.  We are a 501c4 nonpartisan, nonprofit organization dedicated to fighting for the survival of America by <b>unifying, educating,</b> and <b>empowering</b> parents to defend their parental rights at all levels of government. 
+ <br><br>
+We are thrilled to be growing at a remarkable rate and would love to put your skills and talents to work helping empower parents to find their voice in this fight. 
+ <br><br>
+We are an equal opportunity employer.
+       <br><br>
+       (Click job title for more details)
+     </div>
+     {% autopaginate jobs 10 %}
+     {% job_search %}
+ 
+     <h4 class="capitalize">
+         {% if MODULE_JOBS_LABEL_PLURAL %}
+             <em>{% blocktrans with label_plural=MODULE_JOBS_LABEL_PLURAL count=paginator.count %}
+                 {{ count }} {{ label_plural }} Found
+             {% endblocktrans %}</em>
+         {% else %}
+             <em>{% blocktrans with count=paginator.count %}
+                 {{ count }} Jobs Found
+             {% endblocktrans %}</em>
+         {% endif %}
+     </h4>
+ 
+     <section>
+         {% for job in jobs %}
+             {% search_result job %}
+         {% empty %}
+             {% if user.profile.is_staff %}
+                 <p><a href="{% url 'job.add' %}">
+                     {% if MODULE_JOBS_LABEL %}
+                         {% blocktrans with label=MODULE_JOBS_LABEL %}
+                             Add a New {{ label }}
+                         {% endblocktrans %}
+                     {% else %}
+                         {% trans "Add a New Job" %}
+                     {% endif %}
+                 </a></p>
+             {% endif %}
+         {% endfor %}
+     </section>
+ 
+     {% paginate %}
+ {% endblock %}
+ 
+ {% block extra_body %}
+     {{ block.super }}
+ 
+     <script type="text/javascript">
+         $(document).ready(function () {
+             var $catAndSubcatSelect = $('#id_cat, #id_sub_cat'),
+                 $jobsSearchForm = $('#t-jobs-search-form');
+ 
+             $catAndSubcatSelect.on('change', function (e) {
+                 $jobsSearchForm.submit();
+             });
+         });
+     </script>
+{% endblock %}

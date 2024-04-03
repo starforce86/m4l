@@ -1,0 +1,201 @@
+{% extends "default-chair-chapter.html" %}
+{% load committee_tags %}
+{% load theme_tags %}
+{% load tagging_tags %}
+{% load base_filters %}
+{% load base_tags %}
+{% load file_tags %}
+{% load file_filters %}
+{% load event_tags %}
+{% load box_tags %}
+
+{% block content %}  
+  <div class="committee-wrap">
+    <div class="page-header">
+      <h1>{{ committee.title }}</h1>
+    </div>
+    
+    <div class="committee-mission">
+      {{ committee.mission|safe }}
+    </div>
+    
+    <div class="committee-content">
+      {{ committee.content|safe }}
+    </div>
+    
+   {% if committee.id == 1 %} 
+    <!-- <h2 class="text-center">Chapter Chair Documents</h2> -->
+    <br/>
+    <div class="files-comm-subcat" style="clear:both;">
+      <div class="committee-subcat col-sm-4">    
+      <a class="btn-click" role="button" data-toggle="collapse" href="#collapseGeneralInfo" aria-expanded="false" aria-controls="collapseGeneralInfo">
+       <h3 class="text-center"><i class="fa fa-folder-open" aria-hidden="true"></i><br/>General Information</h3> 
+       <i class="fa fa-chevron-down" aria-hidden="true"></i>
+      </a>
+          <div id="collapseGeneralInfo" class="collapse">{% box 24 %}</div>
+      </div> <!-- committee-subcat --> 
+      
+      <div class="committee-subcat col-sm-4">
+        <a class="btn-click" role="button" data-toggle="collapse" href="#collapseChaptMeetings" aria-expanded="false" aria-controls="collapseChaptMeetings">
+          <h3 class="text-center"><i class="fa fa-files-o"></i><br/>Chapter Meetings</h3>  
+          <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </a>
+          <div id="collapseChaptMeetings" class="collapse">{% box 25 %}</div>
+      </div> <!-- committee-subcat --> 
+      
+      <div class="committee-subcat col-sm-4">
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseChaptStructure" aria-expanded="false" aria-controls="collapseChaptStructure">
+       <h3 class="text-center"><i class="fa fa-cubes"></i><br/>Chapter Structure</h3> 
+       <i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+          <div id="collapseChaptStructure" class="collapse">{% box 26 %}</div>
+      </div> <!-- committee-subcat --> 
+      
+       <div class="committee-subcat col-sm-4">
+        <a class="btn-click" role="button" data-toggle="collapse" href="#collapseTrainings" aria-expanded="false" aria-controls="collapseTrainings">
+          <h3 class="text-center"><i class="fa fa-user-circle"></i><br/>Trainings</h3> 
+          <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </a>
+         <div id="collapseTrainings" class="collapse">{% box 27 %}</div>
+      </div> <!-- committee-subcat -->
+      
+      <div class="committee-subcat col-sm-4">
+        <a class="btn-click" role="button" data-toggle="collapse" href="#collapseFinances" aria-expanded="false" aria-controls="collapseFinances">
+          <h3 class="text-center"><i class="fa fa-money" aria-hidden="true"></i><br/>Finances</h3> 
+          <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </a>
+        <div id="collapseFinances" class="collapse">{% box 28 %}</div>
+      </div> <!-- committee-subcat -->
+      
+      <div class="committee-subcat col-sm-4">
+        <a class="btn-click" role="button" data-toggle="collapse" href="#collapseMarketingMaterial" aria-expanded="false" aria-controls="collapseMarketingMaterial">
+          <h3 class="text-center"><i class="fa fa-paint-brush" aria-hidden="true"></i><br/>Marketing &amp; Promotional Material</h3> 
+          <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </a>
+        <div id="collapseMarketingMaterial" class="collapse">{% box 29 %}</div>
+      </div> <!-- committee-subcat -->
+
+      <div class="committee-subcat col-sm-4">
+        <a class="btn-click" role="button" data-toggle="collapse" href="#collapseLegislativeProgram" aria-expanded="false" aria-controls="collapseLegislativeProgram">
+          <h3 class="text-center"><i class="fa fa-id-card"></i><br/>Legislative Program</h3> 
+          <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </a>
+        <div id="collapseLegislativeProgram" class="collapse">{% box 30 %}</div>
+      </div> <!-- committee-subcat -->
+
+      <div class="committee-subcat col-sm-4">
+        <a class="btn-click" role="button" href="https://momsforliberty.org/photos/set/262/">
+          <h3 class="text-center"><i class="fa fa-picture-o"></i><br/>Graphics</h3> 
+          <a href="/photos/set/262/"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+        </a>
+        <div id="collapseGraphics" class="collapse">{% box 31 %}</div>
+      </div> <!-- committee-subcat -->
+      
+      <div class="committee-subcat col-sm-4">
+        <a class="btn-click" role="button" href="https://www.momsforliberty.org/chapter-endorsements/">
+          <h3 class="text-center"><i class="fa fa-bullhorn"></i><br/>Endorsements &amp; Campaigning</h3>  
+          <a href="/chapter-endorsements/"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+        </a>
+          <div id="collapseEndorsements" class="collapse">{% box 32 %}</div>
+      </div> <!-- committee-subcat -->
+    </div><!-- files-comm-subcat -->{% endif %}
+    
+    {% if officers %}
+    <div class="committee-officers">
+      <div class="label">
+        <label for="officer-table">Officers</label>
+      </div>
+      <table class="table" id="officer-table">
+        <thead>
+          <tr>
+            <th class="officer-position">Position</th>
+            <th class="officer-name">Name</th>
+            {% if show_officers_phone %}
+            <th class="officer-phone">Phone</th>
+            {% endif %}
+            {% if show_officers_email %}
+            <th class="officer-phone">Email</th>
+            {% endif %}
+          </tr>
+        </thead>
+        
+        <tbody>
+          {% for officer in officers %}
+          <tr>
+            <td class="officer-position">{{ officer.position }}</td>
+            
+            <td class="officer-name">
+              <a href="{% url 'profile' officer.user.username  %}">
+                {% if officer.user.get_full_name %}
+                {{ officer.user.get_full_name }}
+                {% else %}
+                {{ officer.user }}
+                {% endif %}
+              </a>
+            </td>
+
+            {% if show_officers_phone %}
+            <td class="officer-phone">{% if officer.phone %}{{ officer.phone }}{% endif %}</td>
+            {% endif %}
+            {% if show_officers_email %}
+            <td class="officer-phone">{% if officer.email %}{{ officer.email }}{% endif %}</td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    
+    {% if sponsors %}
+    <div class="committee-sponsors">
+      <p>{{ committee.sponsors|safe }}</p>
+    </div>
+    {% endif %}
+    
+    {% if admin %}
+    <div class="committee-notes">
+      {{ committee.notes|safe }}
+    </div>
+    {% endif %}
+    
+    
+     <div id="events-chapt-chair" class="clearfix">
+            <h2 class="chpt-sub-ttl text-center">Upcoming Chair Events</h2>
+           
+               {% list_events as events_list group=committee.group.id limit=3 order='current_and_upcoming' %}
+               <ul class="list-inline" style="margin:0;overflow:hidden;">
+                  {% if events_list %}
+                  {% for event in events_list %}
+                  <li class="col-sm-4 col-xs-6">
+                   
+                    {% if event.image %}
+                     <div class="img-overlay">
+                        <img class="img-responsive" alt="{{ event.title }}" src="{% image_url event.image size=705x350 crop=true %}"/>
+                     </div>
+                     {% else %}
+                     <div class="img-overlay">
+                        <img class="img-responsive" alt="{{ event.title }}" src="/media/files/files/c1756fdd/event-filler-img.jpg" height="350" width="705" style="border: 1px solid #ccc;"/>
+                     </div>
+                     {% endif %}
+                    
+                     <h4><a href="/events/search/?event_group={{committee.group.id}}">{{ event.title }}</a></h4>
+                     <p>{{ event.start_dt }}</p>
+                  </li>
+                
+                  {% endfor %}
+                  {% endif %}
+                  
+               </ul>
+               <!-- end: side-event -->
+               <br />
+              <a sytle="color:#fff;" href="/events/search/?event_group={{committee.group.id}}" data-aos="fade-in" data-aos-duration="4000">Explore Events<span aria-hidden="true"> &rarr;</span></a>
+                    
+         </div>
+         <!-- end: events-chapt-chair -->
+    
+   <div style="clear:both;padding-top:25px;"> {% include "committees/meta.html" %}</div>
+    <br />
+    
+  </div>
+{% endblock %}

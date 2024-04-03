@@ -1,0 +1,68 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load nav_tags %}
+{% load event_tags %}
+{% theme_extends "base.html" %}
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+{% block meta_description %}{{ block.super }}{% endblock %}
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}sub m4l-events-list {% endblock body_classes %}
+
+{% if request.path == "/events/search/" %}
+{% block top_bar %}
+{% if request.user.is_authenticated %}
+    {% include "events/top_nav.html" %}
+    {% if request.user.impersonated_user and request.user.impersonated_user.is_superuser or request.user.is_superuser  %}
+        {% if request.session.theme %}
+            {% include "themes/theme_top.html" %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% endblock %}
+{% endif %}
+
+{% block html_body %}
+
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  <div class="page-hdr">
+    <img src="/media/files/files/923fe12c/collage-groups-of-all-ages-representing-moms-for-liberty-2.png" alt="events page header" title="events page header"/>
+  </div><!-- end page-hdr -->
+  
+  <div class="container">
+    <div class="{% block content_classes %} col-xs-12 {% endblock %}">
+      
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block content %}
+      {# Main content goes here #}
+      
+      {% endblock %}
+      
+    </div> <!-- close content -->
+    
+  </div> <!-- close container -->
+</div> <!-- close page-top -->
+
+<footer class="bg-primary {% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}

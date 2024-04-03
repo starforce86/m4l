@@ -1,0 +1,19 @@
+---
+
+- name: Generate the secrets for the project
+  become: false
+  community.general.make:
+    chdir: "{{ project_root }}"
+    target: secrets
+  environment:
+    OP_CONNECT_HOST: "{{ op_connect_host }}"
+    OP_CONNECT_TOKEN: "{{ op_connect_token }}"
+    OP_VAULT: "{{ op_vault }}"
+    OP_ITEM_ID: "{{ op_item_id }}"
+
+
+- name: Create and start services
+  become: false
+  community.general.make:
+    chdir: "{{ project_root }}"
+    target: upgrade-prod

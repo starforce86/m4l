@@ -1,0 +1,50 @@
+---
+
+- name: Download 1Password CLI
+  ansible.builtin.get_url:
+    url: "{{ op_cli_src_url }}"
+    dest: "{{ user_home }}/op-cli.zip"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0644'
+
+- name: Unzip 1Password CLI
+  ansible.builtin.unarchive:
+    src: "{{ user_home }}/op-cli.zip"
+    dest: /usr/local/bin
+    remote_src: true
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Get item fields to be written as files
+  register: field_gets
+  with_items: "{{ write_files }}"
+  when: "'field' in item"
+  loop_control:
+    label: "{{ item.item }} : {{ item.field | default(omit) }}"
+  onepassword.connect.field_info:
+    item: "{{ item.item }}"
+    field: "{{ item.field }}"
+    hostname: "{{ op_connect_host }}"
+    vault: "{{ op_vault_id }}"
+
+- name: Write fields to files
+  with_items: "{{ field_gets.results }}"
+  when: "'field' in item"
+  loop_control:
+    label: "{{ item.item.item }} : {{ item.item.field | default(omit) }} -> {{ item.item.dest }}"
+  ansible.builtin.copy:
+    content: "{{ item.field.value }}"
+    dest: "{{ item.item.dest }}"
+    owner: "{{ item.item.user | default(user) }}"
+    mode: "{{ item.item.mode }}"
+
+- name: Get item files to be written as local files
+  when: "__todo is defined"
+  # when: "'file' in item"
+  register: file_gets
+  with_items: "{{ write_files }}"
+  loop_control:
+    label: "{{ item.item }} : {{ item.file | default(omit) }}"
+  ansible.builtin.meta: noop

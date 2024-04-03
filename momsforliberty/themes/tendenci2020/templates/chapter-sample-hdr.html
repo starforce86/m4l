@@ -1,0 +1,43 @@
+{% load base_tags %}
+{% load nav_tags %}
+{% load box_tags %}
+{% load chapter_tags %}
+{% load theme_tags %}
+<div id="top-nav-block">
+<div id="top-nav" class="nav navbar-nav navbar-right"> <!-- right justifed link in separate nav -->  
+    {% nav 2 %}
+</div>
+</div>
+<!-- start: navbar outer -->
+<nav id="main-hdr-chapter-sample" class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header"> 
+<!-- responsive btn --> 
+      <div class="logo-mobile visible-xs-inline-block">
+        
+        <div class="txt-editor-nav">{{ chapter.mission|safe }}</div>
+        
+      <!--<img title="Logo" src="/files/144/" alt="Moms for Liberty Chapter logo" width="181" height="99">-->
+      </div>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" aria-label="Primary Chapter Navigation">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+<!-- logo -->     
+    </div> <!-- end: navbar-header --> 
+<!-- navigation -->     
+    <div class="container">
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <div class="nav navbar-nav">  <!-- main nav -->
+        
+      <div class="txt-editor-nav">{{ chapter.mission|safe }}</div>
+         
+        </div>
+        
+      </div>
+    </div>
+    
+  </div> <!-- end: container-fluid --> 
+</nav>
+<!-- end: navbar outer -->

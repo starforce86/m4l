@@ -1,0 +1,21 @@
+---
+# housekeeping
+
+- name: Apt deps
+  ansible.builtin.apt:
+    name: "{{ item.name }}{% if 'version' in item %}={{ item.version }}{% endif %}"
+  with_items: "{{ apt_deps }}"
+
+- name: Pip deps
+  ansible.builtin.pip:
+    name: "{{ item.name }}"
+    version: "{{ item.version | default(omit) }}"
+  with_items: "{{ pip_deps }}"
+
+- name: Create .ssh directory
+  ansible.builtin.file:
+    path: "{{ user_home }}/.ssh"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0700"

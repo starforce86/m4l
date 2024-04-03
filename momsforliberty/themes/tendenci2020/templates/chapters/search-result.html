@@ -1,0 +1,22 @@
+{% load base_tags %}
+<div class="wrap-search-item col-sm-6">
+  <div class="search-item chapters-search-item">
+    <div class="panel panel-default">
+          
+       <div class="chapter-featured-image">
+         {% if chapter.featured_image %}
+        <img class="img-responsive" src="{% url 'file' chapter.featured_image.id %}" alt="{{ chapter.title }}" title="{{ chapter.title  }}">
+         {% else %}
+         <img class="img-responsive" src="/media/files/files/8e466ff9/national-m4l-820w.jpg" alt="{{ chapter.title }}" title="{{ chapter.title  }}">
+         {% endif %}
+      </div>
+      
+      <div class="panel-heading">
+        <h3><a href="{% if chapter.status_detail == 'pending' %}https://momsforliberty.tendenci.net/chapters-coming-soon/{% else %}{{ chapter.get_absolute_url }}{% endif %}">{{ chapter.title }}, {{chapter.state}}</a></h3>
+      </div>
+      
+      {% include "chapters/meta.html" %}
+      
+    </div>
+  </div>
+</div>

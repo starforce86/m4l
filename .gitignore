@@ -1,0 +1,27 @@
+# Development artifacts
+/venv/
+/.venv/
+*.log
+*.pyc
+__pycache__
+.DS_Store
+
+# Media is too big for version control
+/momsforliberty/media/
+
+# Postgres container data
+/postgresql/seed.dump
+/postgresql/data
+
+# Secrets
+.env
+.env*
+!/.env.example
+*.crt
+*.key
+*.pem
+.pytest_cache
+.secrets
+
+# a file created on deploy
+./m4l-tendenci/tendenci/themes/t7-base/templates/versions/git.txt

@@ -1,0 +1,104 @@
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load box_tags %}
+{% load nav_tags %}
+{% load photo_tags %}
+{% load perm_tags %}
+{% theme_extends "base.html" %}
+
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+{% block meta_description %}{{ block.super }}{% endblock %}
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}{% endblock body_classes %}
+{% block html_body %}
+<style>
+  .panel-default>.panel-heading {background-color: #fff;}
+  @media only screen and (min-width: 600px) {
+    .design-content {
+      position: absolute;
+      z-index: 1;
+      top: 65%;
+      left: 0;right:0;
+    }
+  }
+  .design-content {
+    text-align: center;
+    color: #fff;
+ }
+ .fa {
+    padding: 5px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+  
+  </style>
+
+{% theme_include "header.html" %}
+
+<div id="page-top">
+<div class="page-hdr" style="position: relative;">
+{% if page.header_image %}
+<img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive page-hdr-bg" style="opacity: 1.0;" />
+{% endif %}
+<div class="container">
+
+
+<div class="design-content">
+
+
+
+
+</div>
+</div>
+</div>
+<div class="container">
+<div class="{% block content_classes %} col-xs-12{% endblock %}">
+{% block content_messages %}
+{% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+{% endblock %}
+{% block custom_body %}
+<div class="t">
+<div class="page-wrap">
+<div class="content">
+{{ page.content|safe }}
+
+<div class="info-bottom">
+
+</div>
+<div style="clear:both;display:block;"> {% include "pages/meta.html" %} </div>
+</div>
+</div>
+{% endblock custom_body %}
+</div> 
+</div> 
+</div> 
+<footer class="bg-primary {% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+{% block footer %}
+{% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+{% endblock %}
+</footer>
+{% endblock %}

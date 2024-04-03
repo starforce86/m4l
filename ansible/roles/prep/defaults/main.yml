@@ -1,0 +1,7 @@
+---
+
+user: "{{ ansible_ssh_user }}"
+user_home: "/home/{{ user }}"
+
+apt_deps: []
+pip_deps: []

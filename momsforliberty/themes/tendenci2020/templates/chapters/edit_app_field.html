@@ -1,0 +1,33 @@
+{% extends "chapters/base-wide.html" %}
+{% load chapter_tags %}
+{% load perm_tags %}
+{% load styled_forms %}
+
+{% block title %}{% trans "Customize Application Fields" %}{% endblock %}
+
+{% block extra_head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="t">
+        <h1><a href="{% url 'chapters.detail' app_field.chapter.slug %}">{{ app_field.chapter.title }}</a></h1>
+        <h3>{% trans "Customize Application Fields" %}</h3>
+
+        {% if not app_fields_exists %}
+            <p>{% trans "Chapter membership app is not available yet." %}</p>
+        {% else %}
+            <div class="alert alert-info"
+                 role="alert">{% trans "Chapter leaders: Please customize the following field to fit your chapter's need." %}</div>
+            <form id="caf-form" class="form-horizontal" action="." method="post">{% csrf_token %}
+                {{ form|styled_form }}
+
+                <input class="btn btn-primary" type="submit" value="{% trans 'Save Changes' %}"/>
+
+            </form>
+            <br/>
+        {% endif %}
+    </div>
+{% endblock %}
+

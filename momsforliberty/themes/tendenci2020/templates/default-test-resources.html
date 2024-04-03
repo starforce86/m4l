@@ -1,0 +1,266 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load nav_tags %}
+{% load category_tags %}
+{% load staff_tags %}
+{% load perm_tags %}
+{% load box_tags %}
+{% load bootstrap_pagination_tags %}
+{% theme_extends "base.html" %}
+
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+
+{% block meta_description %}{{ block.super }}{% endblock %}
+
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}sub about-sub{% endblock body_classes %}
+{% block html_body %}
+
+
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  
+   <div class="page-hdr" style="margin-top: 0px;margin-bottom: 25px;background-color: #152d53;">
+          {% if page.header_image %}
+            <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive" style="width: 100%;object-fit: cover;"/>
+          {% endif %}
+     </div>
+     {% if page.title %}  
+     <div class="container">
+          <h1 class="text-center">{{ page.title }}</h1>   
+     </div>
+  {% endif %}
+  
+  <div class="container">
+ 
+    <div class="{% block content_classes %} col-xs-12{% endblock %}">
+      
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block custom_body %}
+      
+      <div class="t">   
+        <div class="page-wrap">  
+          
+          <div class="content">
+           {{ page.content|safe }}
+          </div>   
+          <br />
+          <div id="abt-staff">
+            
+    <h2 class="text-center">Issues</h2>
+     <center>Current issues American parents are encountering in their children's schools.<br>
+    <div class="files-comm-subcat" style="clear:both;">       
+       <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseBooks" aria-expanded="false" aria-controls="collapseBooks">
+        <h3 class="text-center"><i class="fa fa-files-o" aria-hidden="true"></i><br/>Books</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseBooks" class="collapse">{% box 36 %}</div>
+       </div> <!-- committee-subcat -->
+       
+       <div class="col-sm-4">
+         <a class="btn-click" role="button" data-toggle="collapse" href="#collapseSexEd" aria-expanded="false" aria-controls="collapseSexEd">
+           <h3 class="text-center"><i class="fa fa-files-o"></i><br/>Sex Education</h3>  
+           <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+         </a>
+           <div id="collapseSexEd" class="collapse">{% box 37 %}</div>
+       </div> <!-- committee-subcat -->
+       
+           <div class="col-sm-4">
+         <a class="btn-click" role="button" data-toggle="collapse" href="#collapseSEL" aria-expanded="false" aria-controls="collapseSEL">
+           <h3 class="text-center"><i class="fa fa-files-o"></i><br/>SEL</h3>  
+           <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+         </a>
+           <div id="collapseSEL" class="collapse">{% box 38 %}</div>
+       </div> <!-- committee-subcat -->
+     
+           <div class="col-sm-4">
+         <a class="btn-click" role="button" data-toggle="collapse" href="#collapseCRT" aria-expanded="false" aria-controls="collapseCRT">
+           <h3 class="text-center"><i class="fa fa-files-o"></i><br/>CRT</h3>  
+           <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+         </a>
+           <div id="collapseCRT" class="collapse">{% box 39 %}</div>
+       </div> <!-- committee-subcat -->
+     
+           <div class="col-sm-4">
+         <a class="btn-click" role="button" data-toggle="collapse" href="#collapseDataCollection" aria-expanded="false" aria-controls="collapseDataCollection">
+           <h3 class="text-center"><i class="fa fa-files-o"></i><br/>Data Collection</h3>  
+           <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+         </a>
+           <div id="collapseDataCollection" class="collapse">{% box 40 %}</div>
+       </div> <!-- committee-subcat -->
+     
+           <div class="col-sm-4">
+         <a class="btn-click" role="button" data-toggle="collapse" href="#collapseGenderIdeology" aria-expanded="false" aria-controls="collapseGenderIdeology">
+           <h3 class="text-center"><i class="fa fa-files-o"></i><br/>Gender Ideology</h3>  
+           <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+         </a>
+           <div id="collapseGenderIdeology" class="collapse">{% box 41 %}</div>
+       </div> <!-- committee-subcat -->
+     
+           <div class="col-sm-4">
+         <a class="btn-click" role="button" data-toggle="collapse" href="#collapseSchoolChoice" aria-expanded="false" aria-controls="collapseSchoolChoice">
+           <h3 class="text-center"><i class="fa fa-files-o"></i><br/>School Choice</h3>  
+           <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+         </a>
+           <div id="collapseSchoolChoice" class="collapse">{% box 42 %}</div>
+       </div> <!-- committee-subcat -->
+    </div><!-- files-comm-subcat -->
+             
+ <h2 class="text-center">Allies</h2>
+     <center>Organizations fighting alongside us by providing resources, data, and training <br>that can help Moms for Liberty members as they work to preserve parental rights.<br>
+    <div class="files-comm-subcat" style="clear:both;">       
+       <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseRunningforOffice" aria-expanded="false" aria-controls="collapseRunningforOffice">
+        <h3 class="text-center"><i class="fa fa-handshake-o" aria-hidden="true"></i><br/>Running for Office</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseRunningforOffice" class="collapse">{% box 43 %}</div>
+       </div> <!-- committee-subcat -->
+          
+ <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseCandidateInfo" aria-expanded="false" aria-controls="collapseCandidateInfo">
+        <h3 class="text-center"><i class="fa fa-handshake-o" aria-hidden="true"></i><br/>Candidate Information</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseCandidateInfo" class="collapse">{% box 44 %}</div>
+       </div> <!-- committee-subcat -->         
+          
+ <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseData" aria-expanded="false" aria-controls="collapseData">
+        <h3 class="text-center"><i class="fa fa-handshake-o" aria-hidden="true"></i><br/>Data</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseData" class="collapse">{% box 45 %}</div>
+       </div> <!-- committee-subcat -->   
+          
+ <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseInfo" aria-expanded="false" aria-controls="collapseInfo">
+        <h3 class="text-center"><i class="fa fa-handshake-o" aria-hidden="true"></i><br/>Information</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseInfo" class="collapse">{% box 46 %}</div>
+       </div> <!-- committee-subcat -->   
+          
+ <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseCurriculum" aria-expanded="false" aria-controls="collapseCurriculum">
+        <h3 class="text-center"><i class="fa fa-handshake-o" aria-hidden="true"></i><br/>Curriculum</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseCurriculum" class="collapse">{% box 47 %}</div>
+       </div> <!-- committee-subcat -->         
+          
+ <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseLegal" aria-expanded="false" aria-controls="collapseLegal">
+        <h3 class="text-center"><i class="fa fa-handshake-o" aria-hidden="true"></i><br/>Legal</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseLegal" class="collapse">{% box 48 %}</div>
+       </div> <!-- committee-subcat -->
+    </div><!-- files-comm-subcat -->
+          
+      <br><h2 class="text-center">Topics</h2>
+     <center>Specific topics of interest to members.<br>
+    <div class="files-comm-subcat" style="clear:both;">       
+       <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseConstitution" aria-expanded="false" aria-controls="collapseConstitution">
+        <h3 class="text-center"><i class="fa fa-folder-open-o" aria-hidden="true"></i><br/>Constitution</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseConstitution" class="collapse">{% box 49 %}</div>
+       </div> <!-- committee-subcat -->
+   
+  <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseFOIAReq" aria-expanded="false" aria-controls="collapseFOIAReq">
+        <h3 class="text-center"><i class="fa fa-folder-open-o" aria-hidden="true"></i><br/>FOIA Requests</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseFOIAReq" class="collapse">{% box 50 %}</div>
+       </div> <!-- committee-subcat -->
+   
+  <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseFreeSpeech" aria-expanded="false" aria-controls="collapseFreeSpeech">
+        <h3 class="text-center"><i class="fa fa-folder-open-o" aria-hidden="true"></i><br/>Freedom of Speech</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseFreeSpeech" class="collapse">{% box 51 %}</div>
+       </div> <!-- committee-subcat -->
+   
+  <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseoped" aria-expanded="false" aria-controls="collapseoped">
+        <h3 class="text-center"><i class="fa fa-folder-open-o" aria-hidden="true"></i><br/>Op-Eds/Letters to the Editor</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseoped" class="collapse">{% box 52 %}</div>
+       </div> <!-- committee-subcat -->
+   
+  <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseParentalRights" aria-expanded="false" aria-controls="collapseParentalRights">
+        <h3 class="text-center"><i class="fa fa-folder-open-o" aria-hidden="true"></i><br/>Parental Rights</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseParentalRights" class="collapse">{% box 53 %}</div>
+       </div> <!-- committee-subcat -->
+   
+  <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseSchoolBoards" aria-expanded="false" aria-controls="collapseSchoolBoards">
+        <h3 class="text-center"><i class="fa fa-folder-open-o" aria-hidden="true"></i><br/>School Boards</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseSchoolBoards" class="collapse">{% box 54 %}</div>
+       </div> <!-- committee-subcat -->
+   
+  <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseLegLob" aria-expanded="false" aria-controls="collapseLegLob">
+        <h3 class="text-center"><i class="fa fa-folder-open-o" aria-hidden="true"></i><br/>Legislation & Lobbying</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseLegLob" class="collapse">{% box 55 %}</div>
+       </div> <!-- committee-subcat -->
+   
+  <div class="col-sm-4">    
+       <a class="btn-click" role="button" data-toggle="collapse" href="#collapseState" aria-expanded="false" aria-controls="collapseState">
+        <h3 class="text-center"><i class="fa fa-folder-open-o" aria-hidden="true"></i><br/>State Info</h3>
+        <center><i class="fa fa-chevron-down" aria-hidden="true"></i>
+       </a>
+           <div id="collapseState" class="collapse">{% box 55 %}</div>
+       </div> <!-- committee-subcat -->
+    </div><!-- files-comm-subcat -->
+          
+      <br></div></div></div><left><left><left><div style="clear:both;">    {% include "pages/meta.html" %}  </div>
+        
+        </div><!-- end .page-wrap -->
+        
+      </div><!-- end .t -->
+      
+      {% endblock custom_body %}
+      
+    </div> <!-- close content -->
+    
+  </div> <!-- close container -->
+</div> <!-- close page-top -->
+
+
+<footer class="bg-primary {% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}

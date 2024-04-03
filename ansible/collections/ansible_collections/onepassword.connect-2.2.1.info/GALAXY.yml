@@ -1,0 +1,8 @@
+download_url: https://galaxy.ansible.com/download/onepassword-connect-2.2.1.tar.gz
+format_version: 1.0.0
+name: connect
+namespace: onepassword
+server: https://galaxy.ansible.com/api/
+signatures: []
+version: 2.2.1
+version_url: https://galaxy.ansible.com/api/v2/collections/onepassword/connect/versions/2.2.1/

@@ -1,0 +1,34 @@
+{
+ "collection_info": {
+  "namespace": "onepassword",
+  "name": "connect",
+  "version": "2.2.1",
+  "authors": [
+   "1Password <support@1password.com>"
+  ],
+  "readme": "README.md",
+  "tags": [
+   "security",
+   "onepassword",
+   "secrets",
+   "onepasswordconnect",
+   "connect"
+  ],
+  "description": "Modules for managing and reading 1Password Vaults with 1Password Connect.",
+  "license": [],
+  "license_file": "LICENSE.md",
+  "dependencies": {},
+  "repository": "https://github.com/1Password/ansible-onepasswordconnect-collection",
+  "documentation": "https://github.com/1Password/ansible-onepasswordconnect-collection",
+  "homepage": "https://1password.com/secrets",
+  "issues": "https://github.com/1Password/ansible-onepasswordconnect-collection/issues"
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "f46d8bc1ba6d6f7dd274e6a7fd66c690074f851b70a986fae54989cb437aa5d4",
+  "format": 1
+ },
+ "format": 1
+}

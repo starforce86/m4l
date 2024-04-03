@@ -1,0 +1,120 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load box_tags %}
+{% load nav_tags %}
+{% load photo_tags %}
+{% load perm_tags %}
+{% theme_extends "base.html" %}
+
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+
+{% block meta_description %}{{ block.super }}{% endblock %}
+
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}{% endblock body_classes %}
+{% block html_body %}
+<style>
+  .panel-default>.panel-heading {background-color: #fff;}
+  @media only screen and (min-width: 600px) {
+    .design-content {
+      position: absolute;
+      z-index: 1;
+      top: 65%;
+      left: 0;right:0;
+    }
+  }
+  .design-content {
+    text-align: center;
+    color: #fff;
+ }
+  </style>
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  
+   <div class="page-hdr" style="position: relative;">
+     {% if page.header_image %}
+            <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive page-hdr-bg" style="opacity: 1.0;" />
+          {% endif %}
+      <div class="container">  
+       <!--{% if page.title %}       
+       <h1>{{ page.title }}</h1>      
+       {% endif %}    -->  
+       <!--<br/><br/><div><p class="madison-tagline-pledge">I pledge to support policies that promote parental rights in education and educational freedom. This includes the right of parents to voice their opinions at school board meetings and to take their children's taxpayer-funded education dollars to the education providers of their choosing - whether it be a public, private, charter, or home school</p></div>-->
+     <div class="design-content">
+       <!--<img src="/media/files/box/0dbaf9eb/moms-for-liberty-logo-170w-2.jpg" alt="moms for liberty logo">-->
+       <!--<h3 class="text-center">Sign the Pledge</h3>-->
+            <!--<div class="text-center followus-btn-cta" style="margin:auto;"><a href="/forms/pledge-elected-officials/" class="btn btn-default">Lawmaker</a><a href="/forms/candidate-pledge/" class="btn btn-primary">Candidate</a><a href="/forms/voter-pledge/" class="btn btn-default">Voter</a></div>-->
+    <!--<div class="text-center followus-btn-cta" style="margin: auto;"><a href="/forms/parent-pledge/" class="btn btn-default">Parents</a><a href="/forms/candidate-elected-officials/" class="btn btn-default">Candidates & Elected Officials</a></div> -->
+        
+     </div>
+     
+     </div> 
+     
+          
+   </div>
+  
+  <div class="container">
+ 
+    <div class="{% block content_classes %} col-xs-12{% endblock %}">
+      
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block custom_body %}
+     
+      <div class="t">   
+        <div class="page-wrap">
+          
+          <div class="content">
+              {{ page.content|safe }}
+
+             <!--<div class="text-center followus-btn-cta" style="margin:auto;"><a href="/pledged-lawmakers/" class="btn btn-primary" style="background-color:#18284F;color:#fff;">Lawmakers Who Have Pledged</a><a href="/pledged-candidates/" class="btn btn-primary"style="background-color:#18284F;color:#fff;">Candidates Who Have Pledged</a></div>
+
+<br><p class="text-center">Lawmaker pledges will be verified before appearing on this site and may take 48 hours to update. State education leaders and board members may also be displayed.</p>-->
+                   
+          
+     
+          
+        <div class="info-bottom">
+       <!--<br/><br/>   <p class="text-center">If you have questions on how to make a pledge or how to view pledged officials, please contact us at <a href="#">info@momsforliberty.org</a></p>
+<br/><br/>-->
+         
+      
+          </div>
+          
+          
+        <div style="clear:both;display:block;">  {% include "pages/meta.html" %}   </div>
+        
+        </div><!-- end .page-wrap -->
+        
+      </div><!-- end .t -->
+    
+      {% endblock custom_body %}
+      
+    </div> <!-- close content -->
+    
+  </div> <!-- close container -->
+</div> <!-- close page-top -->
+
+<footer class="bg-primary {% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}

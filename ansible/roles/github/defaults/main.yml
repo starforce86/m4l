@@ -1,0 +1,6 @@
+---
+
+git_host: github.com
+user: "{{ ansible_ssh_user }}"
+user_home: "/home/{{ user }}"
+key_file: "{{ user_home }}/.ssh/github"

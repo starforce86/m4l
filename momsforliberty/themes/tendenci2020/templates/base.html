@@ -1,0 +1,208 @@
+{% load announcement_tags %}
+{% load perm_tags %}
+
+{# admin left for deprecation for custom templates/themes #}
+{% is_admin request.user as admin %}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    
+<!-- Tendenci2020 Theme Powered by Tendenci — The Open Source AMS
+ ______                   __                                     ___       __       ___       __ 
+/\__  _\                 /\ \                         __       /'___`\   /'__`\   /'___`\   /'__`\
+\/_/\ \/    __    ___    \_\ \     __    ___     ___ /\_\     /\_\ /\ \ /\ \/\ \  /\_\ /\ \ /\ \/\ \
+   \ \ \  /'__`\/' _ `\  /'_` \  /'__`\/' _ `\  /'___\/\ \    \/_/// /__\ \ \ \ \ \/_/// /__\ \ \ \ \
+    \ \ \/\  __//\ \/\ \/\ \L\ \/\  __//\ \/\ \/\ \__/\ \ \      // /_\ \\ \ \_\ \   // /_\ \\ \ \_\ \
+     \ \_\ \____\ \_\ \_\ \___,_\ \____\ \_\ \_\ \____\\ \_\    /\______/ \ \____/  /\______/ \ \____/ 
+      \/_/\/____/\/_/\/_/\/__,_ /\/____/\/_/\/_/\/____/ \/_/    \/_____/   \/___/   \/_____/   \/___/
+                                                                                                
+Really, really, you're looking at our source code?  You're with us!  You like Open Source, join us!
+Fork us at github.com/tendenci  -->
+    
+    {% block full_title %}<title>{% block title %}{{ SITE_GLOBAL_SITEDISPLAYNAME }}{% endblock %}</title>{% endblock %}
+    
+    {% block full_meta_description %}<meta name="description" 
+    content="{% block meta_description %}{{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}" />{% endblock %}
+    
+    {% block full_meta_keywords %}<meta name="keywords" 
+    content="{% block meta_keywords %}{{ SITE_GLOBAL_SITEDISPLAYNAME }}, {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}" />{% endblock %}
+    
+    <meta name="generator" content="Tendenci" />
+    
+    {% block meta_canonical_url %}{% endblock %}
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss/">
+    <link rel="search" type="application/opensearchdescription+xml" title="{{ SITE_GLOBAL_SITEDISPLAYNAME }}" href="{{ SITE_GLOBAL_SITEURL }}{% url 'open_search' %}">
+    
+    {% block jquery_script %}
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.3.2.min.js"></script>
+    {% endblock jquery_script %}
+    
+    {% block includebootstrap3css %}
+    {# Let's try using Bootstrap 3 in all sites #}
+    <link href="{% static 'bootstrap3/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    {% endblock %}
+    
+    
+    {% if request.user.is_authenticated %}
+    
+    {% endif %}
+    
+    
+    <link href="{% static 'yamm/yamm.css' %}" rel="stylesheet" type="text/css">
+    
+    <link href="{% static 'css/websymbols.css' %}" rel="stylesheet" type="text/css">
+    
+    {% block extra_head %}{% endblock %}
+    
+    {% if SITE_GLOBAL_SEMGOOGLEANALYTICSPROFILEID %}
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ SITE_GLOBAL_SEMGOOGLEANALYTICSPROFILEID }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ SITE_GLOBAL_SEMGOOGLEANALYTICSPROFILEID }}');
+      </script>
+    {% endif %}
+    
+    
+    <!-- Starts Tendenci Head Tag
+    =========================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Custom styles for this template
+    =========================================================== -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}?v=1.1" type="text/css">
+    
+    <!-- To change Bootswatch Theme, use this link  
+    ============================================================================ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" type="text/css">
+    
+   
+    <!-- FAVICON -->
+    <link rel="icon" href="/themes/tendenci2020/media/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/themes/tendenci2020/media/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/themes/tendenci2020/media/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/themes/tendenci2020/media/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/themes/tendenci2020/media/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/themes/tendenci2020/media/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/themes/tendenci2020/media/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/themes/tendenci2020/media/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/themes/tendenci2020/media/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/themes/tendenci2020/media/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/themes/tendenci2020/media/img/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/themes/tendenci2020/media/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/themes/tendenci2020/media/img/favicon-16x16.png">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/themes/tendenci2020/media/img/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">   
+    
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://use.typekit.net/edy0hmm.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+     {% block meta_og %}    
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="{{ SITE_GLOBAL_SITEDISPLAYNAME }}"/>
+    <meta property="og:site_name" content="{{ SITE_GLOBAL_SITEDISPLAYNAME }}"/>
+    <meta property="og:url" content="https://momsforliberty.org" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="{{ MODULE_SOCIAL_MEDIA_OG_DESCRIPTION }}" />
+    <meta property="og:image" content="https://momsforliberty.org/media/files/files/1d036e1b/m4l-og-img.jpg" />
+    <meta property="og:image:height" content="630" /> 
+    <meta property="og:image:width" content="1024" />
+    {% endblock %}
+    
+    {% if SITE_GLOBAL_GOOGLETAGMANAGERCONTAINERID %}
+    <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','{{ SITE_GLOBAL_GOOGLETAGMANAGERCONTAINERID }}');</script>
+  <!-- End Google Tag Manager -->
+  {% endif %}
+    </head>
+  
+  
+  <body id="{% block body_ids %}{% endblock %}" class="{% if request.user.is_superuser %}t-auth-admin-loggedin {% endif %}{% block body_classes %}{% endblock %}">
+    {% if SITE_GLOBAL_GOOGLETAGMANAGERCONTAINERID %}
+    <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ SITE_GLOBAL_GOOGLETAGMANAGERCONTAINERID }}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  {% endif %} 
+    {% block top_bar %}
+    {% if request.user.is_superuser %}
+    {% if request.user.impersonated_user and not request.user.impersonated_user.is_superuser  %}
+    {% if request.user.is_authenticated %}
+    {% include "top_menu/user_top-new.html" %}
+    {% endif %}
+    {% else %}
+    {% include "top_menu/admin_top-new.html" %}
+    
+    {% if request.session.theme %}
+    {% include "themes/theme_top.html" %}
+    {% endif %}
+    {% endif %}
+    {% else %}
+    {% if request.user.is_authenticated %}
+    {% include "top_menu/user_top-new.html" %}
+    {% endif %}
+    {% endif %}
+    {% endblock %}
+
+   {% emergency_announcement request.user %}
+    
+    {% block html_body %}{% endblock %}
+    
+    
+   
+    
+    
+    {% if request.user.is_superuser %}{# include "admin_menu/admin_bottom.html" #}{% endif %}
+    
+
+    
+    <script>
+      jQuery(document).ready(function () {
+      jQuery('#t-megamenu-lang-dd a').on("click", function (e) {
+      var lang = jQuery(this).data('lang');
+      jQuery('#t-megamenu-lang-input').attr('value', lang);
+      jQuery('#t-megamenu-lang-form').submit();
+      });
+      jQuery('body').css('margin-top', jQuery('#t-admin-megamenu').outerHeight(true) + 'px' );
+      });
+    </script>
+    
+    <script src="{% static 'bootstrap3/js/bootstrap.min.js' %}"></script>
+    
+    {% if request.user.is_superuser %}
+    <script src="{% static 'js/admin_menu.js' %}"></script>
+    {% endif %}
+    
+    {% if user.is_authenticated %}
+    <script src="{% static 'js/global/authenticated.js' %}"></script>
+    {% endif %}
+    
+    {% block extra_body %}{% endblock %}
+    
+    <script>
+      jQuery(document).on('click', '.yamm .dropdown-menu', function (e) {
+      e.stopPropagation()
+      })
+    </script>
+  </body>
+</html>

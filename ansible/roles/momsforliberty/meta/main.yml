@@ -1,0 +1,58 @@
+---
+
+dependencies:
+  - role: prep
+    tags: prep
+    vars:
+      user: "{{ nonroot_user }}"
+      pip_deps:
+        - name: requests
+          version: '>=2.28.2'
+        - name: docker
+
+  - role: fail2ban
+    tags: fail2ban
+    vars:
+      - fail2ban_services:
+          - name: sshd
+            port: 22
+            maxretry: 3
+            bantime: 3600
+
+  - role: docker
+    tags: docker
+    vars:
+      users:
+        - "{{ nonroot_user }}"
+
+  - role: onepassword
+    tags: onepassword
+    vars:
+      user: "{{ nonroot_user }}"
+      write_files:
+        - item: M4L Staging SSH Key
+          field: private key
+          dest: "{{ deploy_key }}"
+          mode: "0600"
+
+      todo_files:
+        # can't find a way to get any of this content yet
+        - item: M4L Certificate (www.MomsForLiberty.org)
+          file: www.momsforliberty.org.crt
+          dest: /etc/ssl/certs/www.momsforliberty.org.crt
+          mode: "0644"
+
+        - item: M4L Certificate (www.MomsForLiberty.org)
+          file: www.momsforliberty.org.key
+          dest: /etc/ssl/private/www.momsforliberty.org.crt
+          mode: "0600"
+
+  - role: github
+    tags: github
+    vars:
+      user: "{{ nonroot_user }}"
+      key_file: "{{ deploy_key }}"
+      repo: "{{ git_url }}"
+      git_host: "{{ git.host }}"
+      checkout_root: "{{ project_root }}"
+      checkout_branch: "{{ git_branch }}"

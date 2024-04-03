@@ -1,0 +1,161 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load nav_tags %}
+{% load category_tags %}
+{% load staff_tags %}
+{% load perm_tags %}
+{% load bootstrap_pagination_tags %}
+{% theme_extends "base.html" %}
+
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+
+{% block meta_description %}{{ block.super }}{% endblock %}
+
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}sub about-sub{% endblock body_classes %}
+{% block html_body %}
+
+
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  
+   <div class="page-hdr" style="margin-top: 0px;margin-bottom: 25px;background-color: #152d53;">
+          {% if page.header_image %}
+            <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive" style="width: 100%;object-fit: cover;"/>
+          {% endif %}
+     </div>
+     {% if page.title %}  
+     <div class="container">
+          <h1 class="text-center">{{ page.title }}</h1>   
+     </div>
+  {% endif %}
+  
+  <div class="container">
+ 
+    <div class="{% block content_classes %} col-xs-12{% endblock %}">
+      
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block custom_body %}
+      
+      <div class="t">   
+        <div class="page-wrap">  
+          
+          <div class="content">
+           {{ page.content|safe }}
+          </div>   
+          <br />
+          <div id="abt-staff">
+            
+          <h2 class="text-center"> Meet the Executive Board </h2>
+            <hr>
+          {% list_staff as staff_list limit="3" filters="department=1|department=3" order="position" %}
+          {% for staff in staff_list %}  
+         
+          {% for img in staff.stafffile_set.all %}
+            {% if img.photo_type == "featured" %}
+            <div class="col-sm-4">
+              <a href="{{ staff.get_absolute_url }}"> </a>
+                <img alt="{{ staff.name }} Leadership Team Headshot" class="img-responsive leader-headshots" src="{% url "file" img.pk %}" />
+              <br />
+                <div class="leader-name"><h3>{{ staff.name }}</h3></div>
+             {% if staff.positions %}
+              <p class="leader-edu">
+                {% for position in staff.positions.all %}      
+                {{ position }}{% endfor %}
+              </p>
+              {% endif %}
+              
+              {% if staff.education %}
+               <p class="leader-edu">
+                  {{ staff.education|safe }}
+               </p>
+              {% endif %}
+                <p class="leader-bio">{{ staff.biography|striptags|safe }}</p>
+              
+            </div>
+            {% endif %}
+          {% endfor %}
+            
+         {% endfor %}<!--  end staff_list --> 
+            <p>&nbsp;</p>
+           <p>&nbsp;</p>
+          
+            <div class="text-center well" style="clear:both;">
+              <h3>Request a Speaker</h3>
+              <div style="margin: 20px 0">Would you like one of us to speak at an event?</div>
+              <div class="btn btn-primary"><a href="/forms/request-speaker/" style="color:#fff;">Fill out Speaker Request form here</a></div>
+              <br/> <br/>
+            </div>
+        
+          <h2 class="text-center"> Meet the National Team </h2>
+            <hr>
+          {% list_staff as staff_list filters="department=2" order="position" limit=10 %}
+          {% for staff in staff_list %}  
+             
+            <div class="national-tm-block ">
+             
+              <a href="{{ staff.get_absolute_url }}"> </a>
+              
+               {% for img in staff.stafffile_set.all %}
+              <div class="col-sm-4">
+               {% if img.photo_type and img.photo_type == "featured" %}
+                <img alt="{{ staff.name }} Leadership Team Headshot" class="img-responsive leader-headshots" src="{% url "file" img.pk %}" />
+                {% endif %}
+               {% endfor %}
+              
+                <div class="leader-name"><h3>{{ staff.name }}</h3></div>
+            
+               <p class="leader-edu text-center">
+                  {% for position in staff.positions.all %}      
+                {{ position }}{% endfor %}
+               </p>
+              
+                <p class="leader-bio">{{ staff.biography|striptags|safe }}</p>
+              </div>
+            </div>
+             
+         {% endfor %}<!--  end staff_list --> 
+          
+            
+          </div><!-- end #abt-staff -->
+           <p>&nbsp;</p>
+           <p>&nbsp;</p>
+          
+      <div style="clear:both;">    {% include "pages/meta.html" %}  </div> 
+        
+        </div><!-- end .page-wrap -->
+        
+      </div><!-- end .t -->
+      
+      {% endblock custom_body %}
+      
+    </div> <!-- close content -->
+    
+  </div> <!-- close container -->
+</div> <!-- close page-top -->
+
+
+
+<footer class="bg-primary {% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}

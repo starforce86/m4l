@@ -1,0 +1,51 @@
+{% load perm_tags %}
+{% load base_filters %}
+{% load donation_tags %}
+
+<tr>
+    <!-- Date -->
+    <td>
+        {% if donation.donation_dt %}
+            {{ donation.donation_dt|date:"F j, Y"}}
+        {% endif %}
+    </td>
+    <!-- Amount-->
+    <td>
+        {{ donation.donation_amount|format_currency }}
+    </td>
+    <!-- Donate to Entity -->
+    <td>
+        {% if donation.donate_to_entity %}
+            {% if donation.donate_to_entity.chapter %}
+                <a href="{% url "chapters.detail" donation.donate_to_entity.chapter.slug %}">{{ donation.donate_to_entity }}</a>
+            {% else %}
+                <a href="{% url "entity" donation.donate_to_entity.pk %}">{{ donation.donate_to_entity }}</a>
+            {% endif %}
+        {% endif %}
+    </td>
+    <!-- Email -->
+    <td>
+        {{ donation.email }}
+    </td>
+    <!-- User -->
+    <td>
+        {% if donation.user %}
+            <a href="{% url "profile" donation.user.username %}">{{ donation.user.first_name }} {{ donation.user.last_name }}</a>
+        {% endif %}
+    </td>
+    <!-- Memberships -->
+    <td>
+        {% if donation.user %}
+            {% for membership in donation.user.membershipdefault_set.all %}
+                <a href="{% url "membership.details" membership.pk %}">{{ membership.membership_type }}</a>
+            {% endfor %}
+        {% endif %}
+        {% if donation.user and donation.user.profile %}
+            {% for chapter_membership in donation.user.profile.chapter_memberships %}
+                <a href="{% url "chapters.membership_details" chapter_membership.id %}">{{ chapter_membership.chapter.title }}</a>
+            {% endfor %}
+        {% endif %}
+    </td>
+
+</tr>
+

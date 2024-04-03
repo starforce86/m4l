@@ -1,0 +1,19 @@
+# Ignore everything
+*
+
+# Allow M4L Tendenci source code
+!/m4l-tendenci
+
+# Allow M4L Tendenci project resources
+!/momsforliberty
+# Media is too large for the Docker image
+/momsforliberty/media
+
+# Ignore unnecessary files inside allowed directories
+# This should go after the allowed directories
+**/*~
+**/*.log
+**/*.pyc
+**/.gitkeep
+**/.DS_Store
+**/Thumbs.db

@@ -1,0 +1,166 @@
+{% extends "donations/base.html" %}
+{% load pagination_tags %}
+{% load profile_tags %}
+{% load donation_tags %}
+{% load base_tags %}
+{% load base_filters %}
+{% load perm_tags %}
+
+{% load bootstrap_pagination_tags %}
+{% load invoice_tags %}
+{% load base_filters %}
+
+{% block title %}{% trans 'Donation Search' %}{% endblock %}
+{% block meta_description %}{{ block.super }}{% endblock %}
+{% block meta_keywords %}{{ block.super }}{% endblock %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" media="print" href="{% static 'css/invoices-report-print.css' %}"/>
+    <style>
+        .total-cell a {
+            text-decoration: none !important;
+        }
+
+        #total_amount_by_donate_to_entity_pie, #total_amount_by_membership_pie {
+            width: 430px;
+            height: 300px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="t">
+        <div class="t-invoice">
+            <div class="t-search">
+
+                <div class="page-header">
+                    <h1>{{ SITE_GLOBAL_SITEDISPLAYNAME }} {% trans "Donation Search" %}</h1>
+                </div>
+
+                {% donation_search %}
+
+                <br/>
+                <div class="row">
+                    {% if total_amount %}
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h4>{% trans 'Donation Total by Entity/Chapter donated to' %}</h4>
+                                    <div id="total_amount_by_donate_to_entity_pie"></div>
+                                    <ul style="list-style-type:circle">
+                                        {% for k, v in total_amount_by_donate_to_entity_d.items %}
+                                            <li>{{ k|underscore_space|title }}: {{ v.0|format_currency }}
+                                                ({{ v.1 }})
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h4>{% trans 'Donation Total by User Membership' %}</h4>
+                                    <div id="total_amount_by_membership_pie"></div>
+                                    <ul style="list-style-type:circle">
+                                        {% for k, v in total_amount_by_membership_d.items %}
+                                            <li>{{ k|underscore_space|title }}: {{ v.0|format_currency }}
+                                                ({{ v.1 }})
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <br/>
+
+                <table class="table table-tendenci-reports">
+                    <thead>
+                    <tr>
+                        <td>Date</td>
+                        <td>Amount</td>
+                        <td>Entity/Chapter donated to</td>
+                        <td>Email</td>
+                        <td>User</td>
+                        <td>Memberships</td>
+                    </tr>
+                    </thead>
+
+                    {% autopaginate donations 10 %}
+
+                    {% if query %}
+                        <div>{{ INDEX_UPDATE_NOTE }}</div>
+                    {% endif %}
+                    {% for donation in donations %}
+                        <div class="invoice-row">
+                            <div class="invoice-row-inner">
+                                {% donations_search_results_line request donation %}
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div>{% trans "0 Results Found" %}</div>
+                    {% endfor %}
+
+                    {% paginate %}
+
+                </table>
+                <br/>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block extra_body %}
+    {{ block.super }}
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{% static 'timepicker/timepicker.js' %}"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.datepicker').datepicker({dateFormat: 'yy-mm-dd'});
+        });
+
+        {% if total_amount %}
+            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var options = {
+                    colors: ['#3366CC', '#e2431e', '#1c91c0', '#e49307', '#24CBE5', '#DDDF00', '#ED561B', '#50B432'],
+                };
+                var total_amount_by_donate_to_entity_data = google.visualization.arrayToDataTable([
+                    ['Action', 'Number'],
+                    {% for k, v in total_amount_by_donate_to_entity_d.items %}
+                        ["{{ k|underscore_space|title }}", {{ v.0 }}]{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                ]);
+
+                var chart = new google.visualization.PieChart(document.getElementById('total_amount_by_donate_to_entity_pie'));
+                chart.draw(total_amount_by_donate_to_entity_data, options);
+
+                var total_amount_by_membership_data = google.visualization.arrayToDataTable([
+                    ['Action', 'Number'],
+                    {% for k, v in total_amount_by_membership_d.items %}
+                        ["{{ k|underscore_space|title }}", {{ v.0 }}]{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                ]);
+                options['colors'] = ['#50B432', '#ed6270', '#1c91c0', '#DDDF00', '#ED561B', '#04a0f9', '#e49307', '2bdb25', '#24CBE5'];
+
+                var chart = new google.visualization.PieChart(document.getElementById('total_amount_by_membership_pie'));
+                chart.draw(total_amount_by_membership_data, options);
+            }
+
+        {% endif %}
+
+    </script>
+{% endblock %}
+

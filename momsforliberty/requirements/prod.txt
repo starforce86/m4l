@@ -1,0 +1,3 @@
+-r common.txt
+-r tendenci.txt
+-r prod_only.txt

@@ -1,0 +1,55 @@
+Directories
+===========
+
+Directories are listings for businesses or other services on your website. You can allow Directories to be purchased to be displayed for a preset amount of time.
+
+Based on different settings, you can allow logged in users or members of your site to post Directories, which will be added to a pending queue for administrator approval.
+
+
+
+Directory Pricing
+~~~~~~~~~~~~~~~~~
+
+Directories can have different price options for posting based on the length of time they are posted.
+
+
+Directory Categories
+~~~~~~~~~~~~~~~~~~~~
+
+One way to organize your directories listings is by using categories. Clicking the "Manage Categories" 
+link either from admin top menu under the Directories or from add or edit pages (right below the category and subcategory fields) will lead 
+you to the admin backend where you can add or edit categories. You can drag and drop to sort categories. Each category
+can have one or more subcategories.
+
+The categories and subcategories added at admin backend will then show in the category and subcategory dropdowns respectively
+on directory add and edit. You can assign one or multiple categories and subcategories to a directory.
+
+
+Affiliations
+~~~~~~~~~~~~
+
+Steps to set up directory affiliations on your site:
+
+1. Turn on the setting "Affiliates Enabled" https://www.example.com/settings/module/directories/#id_affiliates_enabled. 
+
+2. Specify the allowed connections at admin backend for directories https://www.example.com/admin/directories/connection/. 
+
+2. Update the templates `directories/meta.html` and `directories/view.html` if they're pulled down 
+to your site.
+For directories/meta.html, add this block of code:
+::
+
+    {% if directory.status_detail == 'active' %}
+        {% include "directories/include/affiliates_display.html" %}
+    {% endif %}
+
+At the bottom of directories/view.html, include:
+::
+
+    {% block extra_body %}
+        {{ block.super }}
+        {% include "directories/include/affiliates_js.html" %}
+    {% endblock %}
+
+
+Notifications can be pulled down to your site to customize.

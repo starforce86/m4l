@@ -1,0 +1,45 @@
+---
+name: Ansible ping
+
+on:
+  push:
+    branches:
+      - 'ansible'
+
+jobs:
+  ansible_ping:
+      runs-on: ubuntu-latest
+      name: A job to ping
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+
+        - uses: actions/setup-python@v4
+          with:
+            python-version: '3.9'
+
+        - uses: BSFishy/pip-action@v1
+          with:
+            packages: ansible requests>=2.27.0
+
+        - name: Configure 1Password Connect
+          uses: 1password/load-secrets-action/configure@v1
+          with:
+            connect-host: https://op-connect.fabiuslabs.com
+            connect-token: ${{ secrets.OP_CONNECT_TOKEN }}
+
+        - name: Load secret
+          id: op-load-secret
+          uses: 1password/load-secrets-action@v1
+          with:
+            export-env: false
+          env:
+            SSH_KEY: "op://wusp2lmpsngntoclph2p7yavbi/M4L Staging SSH Key/private key"
+
+        - name: ping action step
+          id: ping
+          uses: ./.github/actions/action-ansible-playbook
+          with:
+            key: ${{ steps.op-load-secret.outputs.SSH_KEY }}
+            playbook: ping-staging.yml
+            directory: ./ansible

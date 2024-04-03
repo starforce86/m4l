@@ -1,0 +1,64 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed) ====================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load photo_tags %}
+{% load news_tags %}
+{% load article_tags %}
+{% load event_tags %}
+{% theme_extends "base.html" %}
+
+<!-- Meta Tags (for optimal SEO) ======================= -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+{% block meta_description %}{{ block.super }}{% endblock %}
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body =========================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}sub store-sub{% endblock body_classes %}
+{% block html_body %}
+
+<!-- Header Starts ======================= -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  <div class="page-hdr">
+     {% if page.header_image %}
+     <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive page-hdr-bg"/>
+     {% endif %}
+    </div>
+  <div class="container">
+ 
+    <div class="content{% block content_classes %}{% endblock %}">
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block content %}
+      {# Main content goes here #}
+      {% endblock %}
+      
+       {% block custom_body %} 
+        <div class="page-wrap-custom">   
+          <div class="page-hdr" style="margin-top: 25px;margin-bottom: 25px;">
+          
+            <div id="my-store-46102142"></div>
+            <div>
+              <script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?46102142&data_platform=code" charset="utf-8"></script><script type="text/javascript"> xProductBrowser("id=my-store-46102142", "defaultCategoryId=113307608");</script>
+            </div>
+            
+        <div style="clear:both;">{% include "pages/meta.html" %}</div>   
+       </div><!-- end .page-wrap-custom -->
+      {% endblock custom_body %}
+      
+    </div> <!-- close .content -->
+  </div> <!-- close .container -->
+</div> <!-- close #page-top -->
+
+<footer class="{% block footer_classes %}{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}

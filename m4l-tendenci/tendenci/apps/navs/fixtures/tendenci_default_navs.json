@@ -1,0 +1,461 @@
+[
+    {
+        "model": "navs.nav",
+        "pk": 1,
+        "fields": {
+            "allow_anonymous_view": true,
+            "allow_user_view": false,
+            "allow_member_view": false,
+            "allow_user_edit": false,
+            "allow_member_edit": false,
+            "entity": 1,
+            "create_dt": "2012-04-05T15:57:43",
+            "update_dt": "2023-01-19T20:47:08.798",
+            "creator": 1,
+            "creator_username": "system_generated",
+            "owner": 1,
+            "owner_username": "system_generated",
+            "status": true,
+            "status_detail": "active",
+            "title": "Main Navigation",
+            "description": "The main navigation that is initially created.",
+            "megamenu": false
+        }
+    },
+    {
+        "model": "navs.nav",
+        "pk": 2,
+        "fields": {
+            "allow_anonymous_view": true,
+            "allow_user_view": false,
+            "allow_member_view": false,
+            "allow_user_edit": false,
+            "allow_member_edit": false,
+            "entity": 1,
+            "create_dt": "2016-01-08T15:32:46.562",
+            "update_dt": "2023-01-10T21:10:00.553",
+            "creator": 1,
+            "creator_username": "system_generated",
+            "owner": 1,
+            "owner_username": "system_generated",
+            "status": true,
+            "status_detail": "active",
+            "title": "Utility Nav",
+            "description": "",
+            "megamenu": false
+        }
+    },
+    {
+        "model": "navs.nav",
+        "pk": 3,
+        "fields": {
+            "allow_anonymous_view": false,
+            "allow_user_view": false,
+            "allow_member_view": false,
+            "allow_user_edit": false,
+            "allow_member_edit": false,
+            "entity": 1,
+            "create_dt": "2017-03-08T13:57:37.072",
+            "update_dt": "2021-09-20T17:17:48.011",
+            "creator": 1,
+            "creator_username": "system_generated",
+            "owner": 1,
+            "owner_username": "system_generated",
+            "status": true,
+            "status_detail": "inactive",
+            "title": "Chapter Main Nav",
+            "description": "This navigation is",
+            "megamenu": false
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 2,
+        "fields": {
+            "position": 11,
+            "nav": 1,
+            "label": "Resources",
+            "title": "About Us",
+            "new_window": false,
+            "css": "t-caret",
+            "level": 0,
+            "page": null,
+            "url": "/about/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 4,
+        "fields": {
+            "position": 6,
+            "nav": 1,
+            "label": "Find My Chapter",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/chapters"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 5,
+        "fields": {
+            "position": 7,
+            "nav": 1,
+            "label": "Start a Chapter",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/start-a-chapter/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 8,
+        "fields": {
+            "position": 5,
+            "nav": 1,
+            "label": "Chapters",
+            "title": null,
+            "new_window": false,
+            "css": "t-caret",
+            "level": 0,
+            "page": null,
+            "url": "/chapters"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 14,
+        "fields": {
+            "position": 8,
+            "nav": 1,
+            "label": "Events",
+            "title": null,
+            "new_window": false,
+            "css": "t-caret",
+            "level": 0,
+            "page": null,
+            "url": "/events/search"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 15,
+        "fields": {
+            "position": 2,
+            "nav": 1,
+            "label": "Who We Are",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/about/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 17,
+        "fields": {
+            "position": 19,
+            "nav": 1,
+            "label": "Press",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 0,
+            "page": null,
+            "url": "/news-press/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 22,
+        "fields": {
+            "position": 18,
+            "nav": 1,
+            "label": "For Chapter Chairs",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/committees/chapter-chairs/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 23,
+        "fields": {
+            "position": 15,
+            "nav": 1,
+            "label": "Madison Meetups",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/madison-meetups"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 26,
+        "fields": {
+            "position": 1,
+            "nav": 2,
+            "label": "National Home",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 0,
+            "page": null,
+            "url": "/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 27,
+        "fields": {
+            "position": 1,
+            "nav": 3,
+            "label": "National Home",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 0,
+            "page": null,
+            "url": "/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 28,
+        "fields": {
+            "position": 2,
+            "nav": 3,
+            "label": "Login",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 0,
+            "page": null,
+            "url": "/login/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 29,
+        "fields": {
+            "position": 3,
+            "nav": 3,
+            "label": "Store",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 0,
+            "page": null,
+            "url": "/store/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 30,
+        "fields": {
+            "position": 4,
+            "nav": 3,
+            "label": "Search",
+            "title": null,
+            "new_window": false,
+            "css": "fa fa-search",
+            "level": 0,
+            "page": null,
+            "url": "/search/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 32,
+        "fields": {
+            "position": 2,
+            "nav": 2,
+            "label": "Login",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 0,
+            "page": null,
+            "url": "/login/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 33,
+        "fields": {
+            "position": 3,
+            "nav": 2,
+            "label": "Store",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 0,
+            "page": null,
+            "url": "/store/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 35,
+        "fields": {
+            "position": 14,
+            "nav": 1,
+            "label": "For Parents",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/resources/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 36,
+        "fields": {
+            "position": 3,
+            "nav": 1,
+            "label": "Mom Videos",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/mom-videos/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 37,
+        "fields": {
+            "position": 1,
+            "nav": 1,
+            "label": "About Us",
+            "title": null,
+            "new_window": false,
+            "css": "t-caret",
+            "level": 0,
+            "page": null,
+            "url": ""
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 44,
+        "fields": {
+            "position": 9,
+            "nav": 1,
+            "label": "Events",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/events/search"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 46,
+        "fields": {
+            "position": 16,
+            "nav": 1,
+            "label": "Summit '22",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/summit22/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 47,
+        "fields": {
+            "position": 13,
+            "nav": 1,
+            "label": "Parent Pledge",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/pledge/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 49,
+        "fields": {
+            "position": 17,
+            "nav": 1,
+            "label": "Endorsed Candidates",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/endorsements/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 50,
+        "fields": {
+            "position": 10,
+            "nav": 1,
+            "label": "Summit '23",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/summit23/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 51,
+        "fields": {
+            "position": 4,
+            "nav": 2,
+            "label": "Español",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 0,
+            "page": null,
+            "url": "/espanol/"
+        }
+    },
+    {
+        "model": "navs.navitem",
+        "pk": 52,
+        "fields": {
+            "position": 12,
+            "nav": 1,
+            "label": "Joyful Warriors Podcast",
+            "title": null,
+            "new_window": false,
+            "css": null,
+            "level": 1,
+            "page": null,
+            "url": "/podcast/"
+        }
+    }
+]

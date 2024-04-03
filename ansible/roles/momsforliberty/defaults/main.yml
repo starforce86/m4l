@@ -1,0 +1,11 @@
+---
+
+git:
+  user: git
+  host: github.com
+  repo: fabiuslabs/momsforliberty-web
+
+git_url: "{{ git.user }}@{{ git.host }}:{{ git.repo }}"
+project_root: "{{ nonroot_home }}/m4l"
+
+deploy_key: "{{ nonroot_home }}/.ssh/deploy.key"

@@ -1,0 +1,2 @@
+# Python client for memcached
+pylibmc==1.6.0

@@ -1,0 +1,47 @@
+---
+name: Staging Deploy
+on:
+  push:
+    branches:
+      - 'staging'
+
+jobs:
+  ansible_deploy_staging:
+      runs-on: ubuntu-latest
+      name: Deploy to staging with ansible
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+
+        - uses: actions/setup-python@v4
+          with:
+            python-version: '3.9'
+
+        - uses: BSFishy/pip-action@v1
+          with:
+            packages: ansible requests>=2.27.0
+
+        - name: Configure 1Password Connect
+          uses: 1password/load-secrets-action/configure@v1
+          with:
+            connect-host: https://op-connect.fabiuslabs.com
+            connect-token: ${{ secrets.OP_CONNECT_TOKEN }}
+
+        - name: Load secret
+          id: op-load-secret
+          uses: 1password/load-secrets-action@v1
+          with:
+            export-env: false
+          env:
+            SSH_KEY: "op://wusp2lmpsngntoclph2p7yavbi/M4L Staging SSH Key/private key"
+
+        - name: ansible action step
+          id: ansible
+          uses: ./.github/actions/action-ansible-playbook
+          with:
+            key: ${{ steps.op-load-secret.outputs.SSH_KEY }}
+            playbook: deploy-staging.yml
+            directory: ./ansible
+          env:
+            OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
+            PYTHONUNBUFFERED: 1

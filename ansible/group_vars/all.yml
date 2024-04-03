@@ -1,0 +1,10 @@
+---
+ansible_ssh_user: ubuntu
+nonroot_user: ubuntu
+nonroot_home: "/home/{{ nonroot_user }}"
+
+project_root: "{{ nonroot_home }}/m4l"
+
+op_connect_host: "{{ lookup('env', 'OP_CONNECT_HOST') or 'https://op-connect.fabiuslabs.com' }}"
+op_connect_token: "{{ lookup('env', 'OP_CONNECT_TOKEN') }}"
+op_vault: "{{ lookup('env', 'OP_VAULT') or 'wusp2lmpsngntoclph2p7yavbi' }}"

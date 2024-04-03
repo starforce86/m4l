@@ -1,0 +1,8 @@
+---
+- name: Test connectivity to MomsForLiberty Website
+  hosts: staging
+  become: false
+  gather_facts: false
+  tasks:
+    - name: Ping
+      ansible.builtin.ping:

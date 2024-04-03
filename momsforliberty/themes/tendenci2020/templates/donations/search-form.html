@@ -1,0 +1,42 @@
+<form class="search-form form-group" action="{% url "donation.search" %}" method="get">
+
+    <div>
+        <div class="fieldWrapper form-group">
+            <label>{{ form.start_dt.label }}: </label>
+            {{ form.start_dt }}
+            <label>{{ form.end_dt.label }}: </label>
+            {{ form.end_dt }}
+        </div>
+
+        <div class="fieldWrapper form-group">
+            <label>{% trans 'Donate to Entity' %}: </label>
+            {{ form.entity }}
+        </div>
+
+        <div class="fieldWrapper form-group">
+            <label>{% trans 'Membership' %}: </label>
+            {{ form.default_membership }}
+        </div>
+
+        <div class="fieldWrapper form-group">
+            <label>{% trans 'Chapter Membership' %}: </label>
+            {{ form.chapter_membership }}
+        </div>
+
+        <div class="fieldWrapper form-group">
+            <label>{% trans 'Amount Between' %}: </label>
+            {{ form.start_amount }}
+            <label>{% trans 'and' %}</label>
+            {{ form.end_amount }}
+        </div>
+
+    </div>
+
+    <div class="fieldWrapper form-group">
+        <label>{% trans 'Search By' %} : </label>
+        {{ form.search_criteria }} {{ form.search_text }} {{ form.search_method }}
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="{% trans 'Search' %}"/>
+
+</form>

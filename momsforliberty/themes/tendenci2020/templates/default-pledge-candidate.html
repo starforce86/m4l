@@ -1,0 +1,750 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load photo_tags %}
+{% load news_tags %}
+{% load article_tags %}
+{% load event_tags %}
+{% theme_extends "base.html" %}
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+
+
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+
+{% block meta_description %}{{ block.super }}{% endblock %}
+
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<meta property="og:title" content="M4L Parent Pledge"> <meta
+property="og:type" content="article" /> <meta property="og:image" content="http://momsforliberty.org/files/2373/"> <meta property="og:url" content="http://momsforliberty.org/pledge"> <meta name="twitter:card" content="summary_large_image">
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}sub{% endblock body_classes %}
+{% block html_body %}
+
+
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  <div class="page-hdr">
+   {% if page.header_image %}
+    <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive" />
+    {% endif %}
+  </div>
+  
+  <div class="container">
+ 
+    <div class="{% block content_classes %} col-xs-12{% endblock %}">
+      
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block custom_body %}
+      <!--<h1 class="text-center">THESE CANDIDATES & ELECTED OFFICIALS<BR>STAND WITH PARENTS</h1>-->
+        <p>&nbsp;</p><p><em>Please note: signing this Pledge does not constitute a personal or campaign endorsement by Moms for Liberty, Inc., its Chapter(s), PAC or any other affiliate and may not be used by the signer as such or for campaign purposes.</em></p>
+      <div class="clearfix" style="clear:both;padding-top:35px;">
+        <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">           
+          <div class="panel panel-default">
+               <div id="heading1" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse1" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse1"> Alabama </a></h4>
+               </div>
+               <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+                  <div class="panel-body">
+                     <!--<p>Jane Doe</p> -->
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading2" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse2" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse2"> Alaska </a></h4>
+               </div>
+               <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                  <div class="panel-body">
+                     <!--<p> John Doe</p> -->
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading3" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse3" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse3"> Arizona </a></h4>
+               </div>
+               <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                  <div class="panel-body">
+                    <p><a href="/files/2748/" target="_blank" rel="noopener">Anna Van Hoek</a> - Higley Unified School District Governing Board</p>
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading4" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse4" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse4"> Arkansas </a></h4>
+               </div>
+               <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                  <div class="panel-body">
+                    <p><a href="/files/2876/" target="_blank" rel="noopener">Chris Whorton</a> - Siloam Springs School Board, Zone 2</p>
+                    <p><a href="/files/2976/" target="_blank" rel="noopener">Delia Haak</a> - State Representative, District 17</p>
+                    <p><a href="/files/2860/" target="_blank" rel="noopener">Lee Lane</a> - Valley View School Board</p>
+                    <p><a href="/files/2878/" target="_blank" rel="noopener">Lesa Rissler</a> - Siloam Springs Board of Directors, Ward 4</p>
+                    <p><a href="/files/3107/" target="_blank" rel="noopener">Tyler Dees</a> - State Senator, District 35</p>
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading5" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse5" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse5"> California </a></h4>
+               </div>
+               <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                  <div class="panel-body">
+                    <p><a href="/files/2749/" target="_blank" rel="noopener">Denise McGrew Kane</a> - Atascadero School Board</p>
+                    <p><a href="/files/3655/" target="_blank" rel="noopener">Julie Watson</a> - Exeter Unified School Board</p>
+                    <p><a href="/files/2751/" target="_blank" rel="noopener">Sonja Shaw</a> - Chino Valley Unified School Board, Area 3</p>
+                    <p><a href="/files/2750/" target="_blank" rel="noopener">Susan "Dr. P" Pritchard</a> - La Habra City Council</p>
+               </div>
+                 
+              </div>   
+            </div>
+            <div class="panel panel-default">
+               <div id="heading6" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse6" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse6"> Colorado </a></h4>
+               </div>
+               <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                  <div class="panel-body">
+                    <!--<p>John Doe</p> -->
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading7" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse7" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse7"> Connecticut </a></h4>
+               </div>
+               <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+                  <div class="panel-body">
+                    <!--<p> John Doe</p> -->
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading8" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse8" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse8"> Delaware </a></h4>
+               </div>
+               <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+                  <div class="panel-body">
+                    <!--<p>John Doe</p> -->
+                 </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading9" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse9" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse9"> Florida </a></h4>
+               </div>
+               <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
+                  <div class="panel-body">
+                    <p><a href="/files/3302/" target="_blank" rel="noopener">Al Ferraro</a> - Candidate for Jacksonville Mayor</p>
+                    <p><a href="/files/2977/" target="_blank" rel="noopener">April Carney</a> - Duval County School Board, District 2</p>
+                    <p><a href="/files/2945/" target="_blank" rel="noopener">Cathy Heighter</a> - Palm Coast City Council, District 4</p>
+                    <p><a href="/files/3031/" target="_blank" rel="noopener">Charlotte Joyce</a> - Duval County School Board, District 6</p>
+                    <p><a href="/files/2871/" target="_blank" rel="noopener">Christy Chong</a> - Flagler County School Board</p>
+                    <p><a href="/files/3030/" target="_blank" rel="noopener">Clay Yarborough</a> - State Senator, District 4</p>
+                    <p><a href="/files/3162/" target="_blank" rel="noopener">Danny Becton</a> - Candidate for Duval County Property Appraiser</p>
+                    <p><a href="/files/2847/" target="_blank" rel="noopener">Gene Trent</a> - Brevard County School Board, District 2</p>
+                    <p><a href="/files/2753/" target="_blank" rel="noopener">H. William Mutz</a> - Mayor of Lakeland</p>
+                    <p><a href="/files/2765/" target="_blank" rel="noopener">Jacqueline Rosario</a> - Indian River County School Board, District 2</p>
+                    <p><a href="/files/2949/" target="_blank" rel="noopener">Jamie Haynes</a> - Volusia County School Board, District 1</p>
+                    <p><a href="/files/3163/" target="_blank" rel="noopener">Jason Fischer</a> - Candidate for Duval County Property Appraiser</p>
+                    <p><a href="/files/2904/" target="_blank" rel="noopener">John Rutherford</a> - US Congress, District 4</p>
+                    <p><a href="/files/2835/" target="_blank" rel="noopener">Karen Rose</a> - Sarasota County Public School Board</p>
+                    <p><a href="/files/3300/" target="_blank" rel="noopener">Lauren Key</a> - Neptune Beach City Council</p>
+                    <p><a href="/files/2942/" target="_blank" rel="noopener">Leann Pennington</a> - Flagler County Commission, District 4</p>
+                    <p><a href="/files/2869/" target="_blank" rel="noopener">Marco Rubio</a> - US Senator</p>
+                    <p><a href="/files/2840/" target="_blank" rel="noopener">Mark Johnson</a> - Hernando County School Board, District 1</p>
+                    <p><a href="/files/2834/" target="_blank" rel="noopener">Michael Beltran</a> - State Representative, District 70</p>
+                    <p><a href="/files/2872/" target="_blank" rel="noopener">Michelle Coldiron</a> - Monroe County Commissioner, District 2</p>
+                    <p><a href="/files/2941/" target="_blank" rel="noopener">Mike Martin</a> - East Flagler County Mosquito District Commissioner</p>
+                    <p><a href="/files/3301/" target="_blank" rel="noopener">Rory Diamond</a> - Jacksonville City Council</p>
+                    <p><a href="/files/2870/" target="_blank" rel="noopener">Stephen Hammond</a> - Monroe County State Committeeman</p>
+                    <p><a href="/files/2944/" target="_blank" rel="noopener">Theresa Carli Pontieri</a> - Palm Coast City Council, District 2</p>
+                    <p><a href="/files/2952/" target="_blank" rel="noopener">Tom Wright</a> - State Senator, District 8</p>
+                 </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading10" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse10" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse10"> Georgia </a></h4>
+               </div>
+               <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
+                  <div class="panel-body">
+                    <!--<p> John Doe</p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading11" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse11" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse11"> Hawaii </a></h4>
+               </div>
+               <div id="collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading11">
+                  <div class="panel-body">
+                    <!--<p> John Doe</p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading12" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse12" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse12"> Idaho </a></h4>
+               </div>
+               <div id="collapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading12">
+                  <div class="panel-body">
+                    <p><a href="/files/2950/" target="_blank" rel="noopener">Carl Bjerke</a> - State Senator, District 5</p>
+                    <p><a href="/files/2975/" target="_blank" rel="noopener">Tammy Nichols</a> - State Senator, District 10</p>
+                  </div>
+               </div>
+            </div><div class="panel panel-default">
+               <div id="heading13" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse13" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse13"> Illinois </a></h4>
+               </div>
+               <div id="collapse13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading13">
+                  <div class="panel-body">
+                    <!--<p> John Doe</p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading14" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse14" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse14"> Indiana </a></h4>
+               </div>
+               <div id="collapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading14">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading15" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse15" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse15"> Iowa </a></h4>
+               </div>
+               <div id="collapse15" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading15">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading16" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse16" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse16"> Kansas </a></h4>
+               </div>
+               <div id="collapse16" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading16">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading17" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse17" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse17"> Kentucky </a></h4>
+               </div>
+               <div id="collapse17" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading17">
+                  <div class="panel-body">
+                    <p><a href="/files/3204/" target="_blank" rel="noopener">Marianne Proctor</a> - State Representative, District 60</p>
+                    <p><a href="/files/2833/" target="_blank" rel="noopener">Steve Rawlings</a> - State Representative, District 66</p>
+                  </div>
+               </div>
+            </div>
+              <div class="panel panel-default">
+               <div id="heading18" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse18" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse18"> Louisiana </a></h4>
+               </div>
+               <div id="collapse18" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading18">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading19" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse19" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse19"> Maine </a></h4>
+               </div>
+               <div id="collapse19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading19">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+                 <div class="panel panel-default">
+               <div id="heading20" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse20" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse20"> Maryland </a></h4>
+               </div>
+               <div id="collapse20" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading20">
+                  <div class="panel-body">
+                    <p><a href="/files/2837/" target="_blank" rel="noopener">Andy Kuhl</a> - Candidate for Baltimore County Sheriff</p>
+                    <p><a href="/files/2811/" target="_blank" rel="noopener">April Rose</a> - Candidate for State Delegate, District 5</p>
+                    <p><a href="/files/3023/" target="_blank" rel="noopener">Bob Cassilly</a> - Cadidate for Harford County Executive</p>
+                    <p><a href="/files/2684/" target="_blank" rel="noopener">Christopher Tomlinson</a> - Candidate for State Delegate, District 5</p>
+                    <p><a href="/files/2899/" target="_blank" rel="noopener">Chuck Callahan</a> - Talbot County Council</p>
+                    <p><a href="/files/2682/" target="_blank" rel="noopener">Dan Cox</a> - Candidate for Governor</p>
+                    <p><a href="/files/2873/" target="_blank" rel="noopener">Dave Stepp</a> - Candidate for Talbot County Council</p>
+                    <p><a href="/files/2894/" target="_blank" rel="noopener">David Montgomery</a> - Candidate for Talbot County Council</p>
+                    <p><a href="/files/3022/" target="_blank" rel="noopener">Diane Alvarez</a> - Candidate for Harford Board of Education, District F</p>
+                    <p><a href="/files/2895/" target="_blank" rel="noopener">Donna Nizolek</a> - Candidate for Talbot County Board of Education, District 3</p>
+                    <p><a href="/files/2810/" target="_blank" rel="noopener">Gordanna Schifanelli</a> - Candidate for Lt Governor</p>
+                    <p><a href="/files/2845/" target="_blank" rel="noopener">James Amos</a> - Candidate for Baltimore County Council, District 2</p>
+                    <p><a href="/files/2807/" target="_blank" rel="noopener">James Miller</a> - Candidate for Carroll County Board of Education</p>
+                    <p><a href="/files/2688/" target="_blank" rel="noopener">Johnny Mautz</a> - Candidate for State Senator, District 37</p>
+                    <p><a href="/files/2805/" target="_blank" rel="noopener">Justin Ready</a> - Candidate for State Delegate, District 5</p>
+                    <p><a href="/files/2686/" target="_blank" rel="noopener">Kayla Mariskanish</a>, Candidate for Harford County Board of Education</p>
+                    <p><a href="/files/3020/" target="_blank" rel="noopener">Melissa Hahn</a> - Candidates for Harford Board of Education, District D</p>
+                    <p><a href="/files/2856/" target="_blank" rel="noopener">Michael Guerin</a> - Candidate for Carroll County Commission, District 4</p>
+                    <p><a href="/files/2812/" target="_blank" rel="noopener">Michael Peroutka</a> - Candidate for Attorney General</p>
+                    <p><a href="/files/2813/" target="_blank" rel="noopener">Nicolee Ambrose</a> - Candidate for US Congress, District 2</p>
+                    <p><a href="/files/2784/" target="_blank" rel="noopener">Nino Mangione</a> - Candidate for State Delegate, District 42A</p>
+                    <p><a href="/files/2880/" target="_blank" rel="noopener">Pat McDonough</a> - Candidate for Baltimore County Executive</p>
+                    <p><a href="/files/2866/" target="_blank" rel="noopener">Rebecca Chesner</a> - Candidate for Baltimore County School Board, District 2</p>
+                    <p><a href="/files/2687/" target="_blank" rel="noopener">Rebecca Hamilton</a> - Candidate for Cecil County Council</p>
+                    <p><a href="/files/2859/" target="_blank" rel="noopener">Renee Dixon</a> - Candidate for Cecil County Board of Education, District 4</p>
+                    <p><a href="/files/2858/" target="_blank" rel="noopener">Russ Johnson</a> - Candidate for Cecil County Board of Education, District 5</p>
+                    <p><a href="/files/2808/" target="_blank" rel="noopener">Steve Whisler</a> - Candidate for Carroll County Board of Education</p>
+                    <p><a href="/files/3021/" target="_blank" rel="noopener">Tanya Tyo</a> - Candidate for Harford County Board of Education, District E</p>
+                    <p><a href="/files/2828/" target="_blank" rel="noopener">Tara Battaglia</a> - Carroll County Board of Education</p>
+                    <p><a href="/files/2868/" target="_blank" rel="noopener">Todd Svehla</a> - Candidate for Talbot Board of Education, District 4</p>
+                    <p><a href="/files/2973/" target="_blank" rel="noopener">Tom Hutchinson</a> - Candidate for State Delegate, District 37B</p>
+                    <p><a href="/files/2689/" target="_blank" rel="noopener">Tony Campbell</a> - Candidate for Baltimore County Council, District 6</p>
+                    <p><a href="/files/2778/" target="_blank" rel="noopener">Travis Lerol</a> - Canaidate for State Delegate, District 31</p>
+                    <p><a href="/files/2685/" target="_blank" rel="noopener">Trent Kittleman</a> - Maryland State Delegate, District 9A</p>
+                    <p><a href="/files/2907/" target="_blank" rel="noopener">Wade Strickland</a> - Candidate for Talbot County Council</p>
+                 </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading21" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse21" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse21"> Massachusetts </a></h4>
+               </div>
+               <div id="collapse21" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading21">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading22" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse22" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse22"> Michigan </a></h4>
+               </div>
+               <div id="collapse22" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading22">
+                  <div class="panel-body">
+                    <p><a href="/files/2759/" target="_blank" rel="noopener">Angela Angel</a> - Candidate for Southgate Community School Board&nbsp;</p>
+                    <p><a href="/files/2758/" target="_blank" rel="noopener">Cal Morton</a> - Candidate for Northview School Board</p>
+                    <p><a href="/files/2972/" target="_blank" rel="noopener">Candace Langmeyer</a> - Candidate for Gilbraltar School Board</p>
+                    <p><a href="/files/2788/" target="_blank" rel="noopener">Emily Bauman</a> - Candidate for State Senator, District 5</p>
+                    <p><a href="/files/2757/" target="_blank" rel="noopener">Frank McClelland</a> - Candidate for Gaylor School Board</p>
+                    <p><a href="/files/3019/" target="_blank" rel="noopener">Jamie Thompson</a> - Candidate for State Representative, District 28</p>
+                    <p><a href="/files/2789/" target="_blank" rel="noopener">Joshua Faulk</a> - Candidate for Reese Public School Board of Education</p>
+                    <p><a href="/files/760/" target="_blank" rel="noopener">Katie Staroba</a> - Candidate for Holland School Board</p>
+                    <p><a href="/files/2821/" target="_blank" rel="noopener">Lana Theis</a> - State Senator, District 22</p>
+                    <p><a href="/files/3098/" target="_blank" rel="noopener">Lianna Styx</a> - Huron School Board</p>
+                    <p><a href="/files/2909/" target="_blank" rel="noopener">Dr. Linda Lee Tarver</a> - Candidate for Michigan State Board of Education</p>
+                    <p><a href="/files/2898/" target="_blank" rel="noopener">Matthew Buczek</a> - Precinct Delegate Lincoln 1, Midland County</p>
+                    <p><a href="/files/2908/" target="_blank" rel="noopener">Tamara Carlone</a> - Candidate for State Board of Education</p>
+                    <p><a href="/files/2804/" target="_blank" rel="noopener">Tudor Dixon</a> - Candidate for Governor</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading23" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse23" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse23"> Minnesota </a></h4>
+               </div>
+               <div id="collapse23" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading23">
+                  <div class="panel-body">
+                     <p><a href="/files/2948/" target="_blank" rel="noopener">Nathan Miller</a> - State Senator, District 9</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading24" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse24" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse24"> Mississippi </a></h4>
+               </div>
+               <div id="collapse24" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading24">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading25" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse25" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse25"> Missouri </a></h4>
+               </div>
+               <div id="collapse25" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading25">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading26" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse26" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse26"> Montana </a></h4>
+               </div>
+               <div id="collapse26" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading26">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading27" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse27" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse27"> Nebraska </a></h4>
+               </div>
+               <div id="collapse27" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading27">
+                  <div class="panel-body">
+<!--<p> John Doe 1 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading28" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse28" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse28"> Nevada </a></h4>
+               </div>
+               <div id="collapse28" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading28">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading29" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse29" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse29"> New Hampshire </a></h4>
+               </div>
+               <div id="collapse29" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading29">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading30" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse30" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse30"> New Jersey </a></h4>
+               </div>
+               <div id="collapse30" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading30">
+                  <div class="panel-body">
+                    <p><a href="/files/2767/" target="_blank" rel="noopener">Robin Shaffer</a> - Ocean City Board of Education</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading31" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse31" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse31"> New Mexico </a></h4>
+               </div>
+               <div id="collapse31" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading31">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading32" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse32" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse32"> New York </a></h4>
+               </div>
+               <div id="collapse32" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading32">
+                  <div class="panel-body">
+                    <p><a href="/files/2853/" target="_blank" rel="noopener">Erin Lee Crowley</a> - Putnam County Legislature, District 9</p>
+                    <p><a href="/files/2783/" target="_blank" rel="noopener">Mike Lawler</a> - US Congress, District 17</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading33" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse33" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse33"> North Carolina </a></h4>
+               </div>
+               <div id="collapse33" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading33">
+                  <div class="panel-body">
+                    <p><a href="/files/2947/" target="_blank" rel="noopener">Brian Helms</a> - Union County Commissioner</p>
+                    <p><a href="/files/2956/" target="_blank" rel="noopener">Gary Sides</a> - Union County Board of Education</p>
+                    <p><a href="/files/2769/" target="_blank" rel="noopener">Michael Kubiniec</a> - Iredell-Statesville School Board, District 5</p>
+                    <p><a href="/files/2865/" target="_blank" rel="noopener">Stony Rushing</a> - Union County Commissioner</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading34" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse34" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse34"> North Dakota </a></h4>
+               </div>
+               <div id="collapse34" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading34">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading35" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse35" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse35"> Ohio </a></h4>
+               </div>
+               <div id="collapse35" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading35">
+                  <div class="panel-body">
+                    <p><a href="/files/3160/" target="_blank" rel="noopener">Jennifer Gross</a> - State Representative, District 52</p> 
+                    <p><a href="/files/2785/" target="_blank" rel="noopener">Shari Chambers</a> - Hartville Village Councilwoman</p>
+                    <p><a href="/files/3161/" target="_blank" rel="noopener">Thomas Radel</a> - Massillon School Board</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading36"class="panel-heading" role="tab">
+                 <h4 class="panel-title"><a class="collapsed" href="#collapse36" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse36"> Oklahoma </a></h4>
+               </div>
+               <div id="collapse36" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading36">
+                  <div class="panel-body">
+                    <p><a href="/files/2771/" target="_blank" rel="noopener">Christi Gillespie</a> - Vice Mayor of Broken Arrow</p>
+                    <p><a href="/files/2779/" target="_blank" rel="noopener">Dana Prieto</a> - State Senator, District 34</p>
+                    <p><a href="/files/2823/" target="_blank" rel="noopener">David Bullard</a> - State Senator, District 6</p>
+                    <p><a href="/files/2827/" target="_blank" rel="noopener">Debra Taylor</a> - Broken Arrow Public School Board, Zone 2</p>
+                    <p><a href="/files/2772/" target="_blank" rel="noopener">Debra Wimpee</a> - Mayor of Broken Arrow</p>
+                    <p><a href="/files/2826/" target="_blank" rel="noopener">E'Lena Ashley</a> - Tulsa Public School Board, District 4</p>
+                    <p><a href="/files/3305/" target="_blank" rel="noopener">Kevin Hern</a> - US Congress, District 1</p>
+                    <p><a href="/files/2822/" target="_blank" rel="noopener">Kevin Stitt</a> - Governor</p>
+                    <p><a href="/files/3303/" target="_blank" rel="noopener">Lisa Ford</a> - Broken Arrow City Council, Ward 2</p>
+                    <p><a href="/files/3653/" target="_blank" rel="noopener">Matt Pinnell</a> - Lt Governor</p>
+                    <p><a href="/files/2824/" target="_blank" rel="noopener">Nathan Dahm</a> - State Senator, District 33</p>
+                    <p><a href="/files/3304/" target="_blank" rel="noopener">Ross Ford</a> - State Representative, District 76</p>
+                    <p><a href="/files/2825/" target="_blank" rel="noopener">Ryan Walters</a> - Superintendent</p>
+                    <p><a href="/files/3454/" target="_blank" rel="noopener">Scott Hasson</a> - Candidate for Deer Creek School Board, Seat 3</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading37" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse37" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse37"> Oregon </a></h4>
+               </div>
+               <div id="collapse37" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading37">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading38" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse38" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse38"> Pennsylvania </a></h4>
+               </div>
+               <div id="collapse38" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading38">
+                  <div class="panel-body">
+                    <p><a href="/files/2902/" target="_blank" rel="noopener">Don Wright</a> - Mifflin County School Board</p>
+                    <p><a href="/files/2846/" target="_blank" rel="noopener">Jake Banta</a> - State Representative, District 4</p>
+                    <p><a href="/files/3559/" target="_blank" rel="noopener">Joanne Stehr</a> - State Representative, District 107</p>
+                    <p><a href="/files/3026/" target="_blank" rel="noopener">Josh Hunt</a> - Milton School Board</p>
+                    <p><a href="/files/3639/" target="_blank" rel="noopener">Lynda Culver</a> - State Representative, District 108</p>
+                    <p><a href="/files/2903/" target="_blank" rel="noopener">Mark Baker</a> - Mifflin County School Board</p>
+                    <p><a href="/files/2979/" target="_blank" rel="noopener">Nickole Nafziger</a> - Penn Manor School Board</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading39" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse39" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse39"> Rhode Island </a></h4>
+               </div>
+               <div id="collapse39" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading39">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading40" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse40" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse40"> South Carolina </a></h4>
+               </div>
+               <div id="collapse40" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading40">
+                  <div class="panel-body">
+                    <p><a href="/files/2905/" target="_blank" rel="noopener">Daniel Palumbo</a> - Sumter District School Board, Area 1</p>
+                    <p><a href="/files/2774/" target="_blank" rel="noopener">Elizabeth Barhardt</a> - Lexington-Richland School Trustee, District 5</p>
+                    <p><a href="/files/2773/" target="_blank" rel="noopener">Ellen Weaver</a> - Superintendent of Education</p>
+                    <p><a href="/files/2775/" target="_blank" rel="noopener">Katie McCown</a> - Lexington County School Trustee, District 1</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading41" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse41" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse41"> South Dakota </a></h4>
+               </div>
+               <div id="collapse41" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading41">
+                  <div class="panel-body">
+                    <p><a href="/files/3452/" target="_blank" rel="noopener">Jessica Castleberry</a> - State Senator, District 35</p>
+                    <p><a href="/files/2906/" target="_blank" rel="noopener">Jim Mehlhaff</a> - State Senator, District 24</p>
+                    <p><a href="/files/3415/" target="_blank" rel="noopener">John Sjaarda</a> - State Representative, District 2</p>
+                    <p><a href="/files/3453/" target="_blank" rel="noopener">Julie Frye-Mueller</a> - State Senator, District 30</p>
+                    <p><a href="/files/2781/" target="_blank" rel="noopener">Mike Weisgram</a> - State Representative, District 24</p>
+                    <p><a href="/files/3416/" target="_blank" rel="noopener">Travis Lasseter</a> - Pennington County Commission, District 4</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading42" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse42" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse42"> Tennessee </a></h4>
+               </div>
+               <div id="collapse42" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading42">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading43" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse43" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse43"> Texas </a></h4>
+               </div>
+               <div id="collapse43" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading43">
+                  <div class="panel-body">
+                    <p><a href="/files/2953/">Ted Cruz</a> - US Senator</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading44" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse44" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse44"> Utah </a></h4>
+               </div>
+               <div id="collapse44" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading44">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading45" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse45" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse45"> Vermont </a></h4>
+               </div>
+               <div id="collapse45" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading45">
+                  <div class="panel-body">
+                     <!--<p> John Doe 1 </p>
+                     <p> Jane Doe 1 </p>
+                     <p> John Doe 2 </p>
+                     <p> Jane Doe 2 </p> -->
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading46" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse46" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse46"> Virginia </a></h4>
+               </div>
+               <div id="collapse46" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading46">
+                  <div class="panel-body">
+                    <p><a href="/files/2910/" target="_blank" rel="noopener">Bob Good</a> - US Congress, District 5</p>
+                    <p><a href="/files/3025/" target="_blank" rel="noopener">Chris Obenshain</a> - Candidate for State Delegate, District 41</p>
+                    <p><a href="/files/3638/" target="_blank" rel="noopener">Josh Quill</a> - Candidate for State Delegate, District 21</p>
+                    <p><a href="/files/2970/" target="_blank" rel="noopener">Lowell Bowman</a> - Candidate for State Delegate, District 41</p>
+                    <p><a href="/files/2971/" target="_blank" rel="noopener">Marie March</a> - State Delegate, District 7</p>
+                    <p><a href="/files/3029/" target="_blank" rel="noopener">Winsome Earle Sears</a> - Lt Governor</p>
+                 </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading47" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse47" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse47"> Washington </a></h4>
+               </div>
+               <div id="collapse47" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading47">
+                  <div class="panel-body">
+                     <p><a href="/files/2777/" target="_blank" rel="noopener">Travis Couture</a> - State Representative, District 35, Position 2</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading48" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse48" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse48"> West Virginia </a></h4>
+               </div>
+               <div id="collapse48" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading48">
+                  <div class="panel-body">
+                    <p><a href="/files/3417/" target="_blank" rel="noopener">Chris Rose</a> - Candidate for US Senator</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading49" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse49" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse49"> Wisconsin </a></h4>
+               </div>
+               <div id="collapse49" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading49">
+                  <div class="panel-body">
+                    <p><a href="/files/2954/" target="_blank" rel="noopener">Barbara Dittrich</a> - State Representative, District 38</p>
+                    <p><a href="/files/3024/" target="_blank" rel="noopener">Eric Meadows</a> - Kenosha Unified School Board</p>
+                  </div>
+               </div>
+            </div>
+          <div class="panel panel-default">
+               <div id="heading50" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse50" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse50"> Wyoming </a></h4>
+               </div>
+               <div id="collapse50" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading50">
+                  <div class="panel-body">
+                   <p><a href="/files/2782/" target="_blank" rel="noopener">Sarah Penn</a> - State Representative, District 33</p>
+                  </div>
+               </div>
+            </div>
+              
+              </div><!-- end accordion -->
+     
+           </div>
+      {% endblock custom_body %}
+        <h1 class="text-center">FOR MORE INFORMATION ON HOW TO <br>TAKE THE PLEDGE <a href="/pledge/">CLICK HERE</a>.</h1><p>
+        *new signers added weekly</p>
+        <p>&nbsp;</p>
+       
+    </div> <!-- close content -->
+    
+    
+  </div> <!-- close container -->
+</div> <!-- close page-top -->
+
+<footer class="{% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}

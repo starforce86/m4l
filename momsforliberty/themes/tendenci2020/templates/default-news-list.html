@@ -1,0 +1,90 @@
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load nav_tags %}
+{% load category_tags %}
+{% load news_tags %}
+{% load perm_tags %}
+{% load bootstrap_pagination_tags %}
+{% theme_extends "base.html" %}
+
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+{% block meta_description %}{{ block.super }}{% endblock %}
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+{% block body_ids %}news-press{% endblock body_ids %}
+{% block body_classes %}sub{% endblock body_classes %}
+{% if request.path == "/news/" %}
+{% block top_bar %}
+{% if request.user.is_authenticated %}
+{% include "news/top_nav.html" %}
+{% if request.user.impersonated_user and request.user.impersonated_user.is_superuser or request.user.is_superuser %}
+{% if request.session.theme %}
+{% include "themes/theme_top.html" %}
+{% endif %}
+{% endif %}
+{% endif %}
+{% endblock %}
+{% endif %}
+{% block html_body %}
+
+{% theme_include "header.html" %}
+
+<div id="page-top">
+<div class="page-hdr">
+{% if page.header_image %}
+<img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive" />
+{% endif %}
+{% if page.title %}
+<div class="container">
+<h1>{{ page.title }}</h1>
+{% endif %}
+</div>
+</div>
+<div class="container">
+<div class="{% block content_classes %} col-xs-12{% endblock %}">
+{% block content_messages %}
+{% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+{% endblock %}
+{% block custom_body %}
+{% list_news as news_list limit=999 tags="national" %}
+{% autopaginate news_list 9 %}
+<div class="t">
+<div class="page-wrap">
+<div style="text-align:center;margin:auto;" class="well" >Please send media inquiries <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#109;&#111;&#109;&#115;&#102;&#111;&#114;&#108;&#105;&#98;&#101;&#114;&#116;&#121;&#46;&#111;&#114;&#103;">&#116;&#111;&#32;&#111;&#117;&#114;&#32;&#101;&#45;&#109;&#97;&#105;&#108;</a>.</div>
+<br />
+<div id="news-list-cont" class="content">
+
+<ul class="list-unstyled">
+{% for news_item in news_list %}
+<li>
+<a href="{{ news_item.get_absolute_url }}">
+<h3 class="panel-title"><center>{{ news_item.headline|truncatechars:70|safe }}</center></h3>
+<p class="item-content">
+{% if news_item.summary %}
+{{ news_item.summary|striptags|truncatechars:200|safe }}
+{% else %}
+{{ news_item.body|striptags|truncatechars:200|safe }}
+{% endif %}
+</p>
+<div>{{ news_item.release_dt|date:"F j, Y" }}</div>
+<div class="n-read-more" style="">Read More</div>
+</a>
+</li>
+{% endfor %}
+</ul>
+</div>
+{% include "pages/meta.html" %}
+</div>
+</div>
+{% paginate %}
+{% endblock custom_body %}
+</div> 
+</div> 
+</div> 
+<footer class="bg-primary {% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+{% block footer %}
+{% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+{% endblock %}
+</footer>
+{% endblock %}

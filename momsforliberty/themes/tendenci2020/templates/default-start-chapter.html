@@ -1,0 +1,165 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load box_tags %}
+{% load nav_tags %}
+{% load photo_tags %}
+{% load perm_tags %}
+{% theme_extends "base.html" %}
+
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+
+{% block meta_description %}{{ block.super }}{% endblock %}
+
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}start-chapter{% endblock body_classes %}
+{% block html_body %}
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  
+   <div class="page-hdr">
+     {% if page.header_image %}
+     <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive page-hdr-bg"/>
+     {% endif %}
+    </div>
+  
+  <div class="container">
+    <div class="content{% block content_classes %}{% endblock %}">
+      
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+       {% block content %}
+      {# Main content goes here #}
+      {% endblock %} 
+      
+      {% block custom_body %}
+      <div class="clearfix" style="clear:both;padding-top:35px;">
+        <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">           
+          <div class="panel panel-default">
+               <div id="heading1" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse1" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse1"> What do we look for in a Chapter Chair? </a></h4>
+               </div>
+               <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+                  <div class="panel-body">
+                     <ul class="list-unstyled">
+                      <li> -Strong leadership skills including the ability to lead a team and delegate</li>
+                        <li> -Good communication skills, both written and verbal</li>
+                       <li>-Self-motivated, principled, and consistent</li>
+                       <li>-The ability to keep a cool head, deescalate contentious situations, and remain focused</li>
+                    </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading2" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse2" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse2"> What do Chapters do? </a></h4>
+               </div>
+               <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                  <div class="panel-body">
+                    <p>Our chapters do amazing work all across the country in their fight for our children’s future. 
+                       Many go above and beyond, but the core responsibility of our chapters is to act as a watchdog over their local school boards. 
+                       They do this by holding regular monthly meetings where they discuss board agendas, votes, and actions. 
+                       Chapters rally members to attend school board meetings, speak up, and take an active role in supporting their schools.
+                    </p> 
+                 </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading3" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse3" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse3"> What does it take to launch a Chapter? </a></h4>
+               </div>
+               <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                  <div class="panel-body">
+                    <ul class="list-unstyled"> 
+                      <li>-A time commitment of approximately 10 hours a week</li>
+                      <li>-The ability to hold a monthly Chapter meeting</li>
+                      <li>-At least 10 liberty-minded members to launch</li>
+                      <li>-3 Chapter leaders (Chair + 2)</li>
+                    </ul>
+                    </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading4" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse4" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse4"> What is the cost? </a></h4>
+               </div>
+               <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                <div class="panel-body">
+                   <p>We provide all new chapters with:
+                     <ul class="list-unstyled">
+                       <li>-An initial bundle of supplies</li>
+                       <li>-A Madison Meetup packet</li>
+                       <li>-T-shirt</li>
+                       <li>-Database system to facilitate record-keeping</li>
+                       <li>-Customer relationship management software, which allows Chapters to do things like send newsletters</li>
+                       <li>-A public webpage to share information and events</li>
+                       <li>-Training... and more!</li>
+                     </ul>
+                     The true cost for these things is subsidized by our generous donors so that we can offer all of this for just $65!
+                    </p>
+               </div>
+            </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading5" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse5" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse5"> What do I do next? </a></h4>
+               </div>
+               <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                  <div class="panel-body">
+                  <p>The first few steps allow you to learn more about us and give us the chance to get to know a little about you. After reviewing the information we provide it is helpful to find a time to meet with the people who would likely be the initial roster of members and serve in leadership alongside you. Whether via a conference call, video chat, or in-person this meeting can give you the opportunity to explain what you have learned, gather any questions from them, and see who might be interested in leading alongside you.
+                    </p>
+<p>
+  The final step in the process is an interview with a member of our team who will be able to answer any questions. Once you are officially approved by the Executive Board, our team will walk you through the process of getting your Chapter up and running.
+
+</p>
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading6" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse6" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse6"> What to avoid? </a></h4>
+               </div>
+               <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                  <div class="panel-body">
+                     <p>Until you have received full approval by the Executive Board to start a Chapter you may not use the Moms for Liberty name or logo. Usage of either to create a social media group, profile, page or handle should wait until approval. Each Chapter receives their own logo. Use of the trademarked Moms for Liberty national logo is strictly prohibited without approval. This includes use in printed materials and on t-shirts.
+                    </p>
+                  </div>
+               </div>
+            </div>
+           
+          </div><!-- end accordion -->
+      </div><!-- end clearfix -->
+          
+        <div class="info-bottom">
+          <a class="text-center btn btn-primary" style="display:table;margin:auto;" href="/forms/start-chapter/">Request info here</a>
+        </div>
+          
+        <div style="clear:both;display:block;">  {% include "pages/meta.html" %}   </div>
+    
+      {% endblock custom_body %}
+      
+    </div> <!-- close content -->
+  </div> <!-- close container -->
+</div> <!-- close page-top -->
+
+<footer class="bg-primary {% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}

@@ -1,0 +1,245 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load box_tags %}
+{% load nav_tags %}
+{% load photo_tags %}
+{% load perm_tags %}
+{% theme_extends "base.html" %}
+
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+
+{% block meta_description %}{{ block.super }}{% endblock %}
+
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}madison-meetups{% endblock body_classes %}
+{% block html_body %}
+<style>
+  .panel-default>.panel-heading {background-color: #fff;}
+  </style>
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  
+   <div class="page-hdr">
+     <div class="container">   
+       {% if page.title %}       
+       <h1>{{ page.title }}</h1>      
+       {% endif %}   
+     </div>
+     
+     <div class="design-content">
+       <img src="/media/files/files/6775c1e4/madison-meetup-logo-final-rgb-768x352.png" alt="madison meetup logo"> 
+     </div>
+     <p class="madison-tagline">For our Republic to survive we must understand the documents on which it was founded.</p>
+     
+          {% if page.header_image %}
+            <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive page-hdr-bg"/>
+          {% endif %}
+   </div>
+  
+  <div class="container">
+ 
+    <div class="{% block content_classes %} col-xs-12{% endblock %}">
+      
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block custom_body %}
+     
+      <div class="t">   
+        <div class="page-wrap">
+          
+          <div class="content">
+            <h2 class="text-center">What does Liberty mean to you? Let's talk about it.</h2>
+          <p class="text-center">  When was the last time you read the Declaration of Independence or the Constitution? </p>
+<hr>
+
+            
+<div class="col-sm-4">
+   
+  <div id="madison-slider" class="carousel slide" data-ride="carousel">
+    
+     <!-- begin: carousel-inner -->   
+    <div class="carousel-inner" id="rotator_inner">
+      {% list_photos as photos_list tags="madison-meetups" quality="90" data-interval="1000" %}
+         {% for photo in photos_list %}
+       <div class="item {% if forloop.first %} active {% endif %}">
+            <img alt="{{ photo.title }}" src="{% photo_image_url photo size=400x650 crop=True %}" class="img-responsive" />
+        </div><!-- end item -->
+       {% endfor %}
+       
+    </div> <!-- end .carousel-inner -->
+   </div> <!-- end: #madison-slider -->
+</div><!-- end: .col-sm-4 -->
+            
+<div class="col-sm-8">      
+  <p>For our Republic to survive we must understand the documents on which it was founded. Consider starting a Madison Meetup with your friends or family today!</p>
+<h3>What is a Madison Meetup? </h3>
+<p>It is like a book club for the Constitution!
+A Madison Meetup is an opportunity to gather together to discuss liberty, freedom and the foundation of our government. Named after the ‘Father of the Constitution’ and a major force behind the Bill of Rights, James Madison, these informal meetings provide the opportunity to read and discuss key documents like the Declaration of Independence, Constitution, and more.
+ </p>
+<p>This is not a highly structured program, it is Americans gathering to talk about what makes our Republic unique. Participants don’t need to know every historical factoid to appreciate the genius of the Founders so Meetup hosts are discussion facilitators rather than instructors.</p>
+</div>            
+            
+</div>  
+          
+          
+      <div class="clearfix" style="clear:both;padding-top:35px;">
+        <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">           
+          <div class="panel panel-default">
+               <div id="heading1" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse1" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse1"> WHO HOLDS A MEETUP? </a></h4>
+               </div>
+               <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+                  <div class="panel-body">
+                     <p>No special qualification or experience is necessary to learn more about our foundations of liberty. You only need the desire and a couple of friends, Moms for Liberty provides the rest for Meetup Facilitators.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading2" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse2" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse2"> WHO COMES TO A MEETUP? </a></h4>
+               </div>
+               <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                  <div class="panel-body">
+                     <p>Each Meetup is different. Groups generally range from 2-20 people. Find the group size that works for you and allows a healthy discussion. Everyone can benefit from reading the founding documents. We encourage Facilitators to start with their close friends and family and branch out from there as needed.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading3" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse3" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse3"> WHERE DO MEETUPS TAKE PLACE? </a></h4>
+               </div>
+               <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                  <div class="panel-body">
+                     <p>These meetings are normally held in the Facilitator’s home. If you aren’t comfortable welcoming people into your home, you can partner with a friend who is or find a good location that will allow for discussion without major distractions. When looking for a venue outside of a home, keep in mind that Moms for Liberty is a 501(c)4 nonpartisan organization (this may help churches and other businesses feel more comfortable hosting you than a partisan group).</p>
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading4" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse4" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse4"> WHAT MATERIAL DO WE USE? </a></h4>
+               </div>
+               <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                  <div class="panel-body">
+                     <div>Moms for Liberty has put together a Meetup Kit, which includes:<br />&ndash; &ldquo;How to Read the Declaration of Independence and Constitution&rdquo; by Paul B. Skousen (a book that provides discussion prompts and questions)<br />&ndash; 10 pocket Constitutions (which also contain the Declaration of Independence)<br />&ndash; &ldquo;Declaration of Independence&rdquo; brochure guide by Moms for Liberty<br /> <br />
+                       You should tailor the meeting to your group. Don&rsquo;t feel the need to rush through material if the group is having a good discussion- simply pick up where you left off next meeting.<br /> <br /> <br />
+                       As Meetups are meant to be active discussions, inevitably someone will ask a question that group members do not know how to answer. It isn&rsquo;t the responsibility of the Facilitator to answer them. We encourage group members to search out answers. This can be done at the Meetup using the internet or afterward referencing the additional resources on our website.</div>
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading5" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse5" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse5"> TIPS FOR FACILITATORS </a></h4>
+               </div>
+               <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                  <div class="panel-body">
+                     <p><strong>Do&hellip;</strong></p><p><strong><em>Before each meeting:</em></strong></p>
+                    <p>-Review questions in the section you are covering</p>
+                    <p>-Remind attendees</p>
+                    <p>-If you plan on showing a video, set up and check necessary equipment</p>
+                    <p><strong><em>During each meeting:</em></strong></p>
+                    <p>-Start and end on time</p>
+                    <p>-Encourage everyone to participate</p>
+                    <p><strong><em>After each meeting:</em></strong></p>
+                    <p>-Make sure the next meeting date is chosen</p>
+                    <p><strong>Don&rsquo;t&hellip;</strong></p>
+                    <p>-Prepare a lesson or &ldquo;teach&rdquo;</p>
+                    <p>-Speak more than others</p>
+                    <p>-Answer every question or give your opinion after every comment</p>
+                    <p><strong>Tips:</strong></p>
+                    <ul>
+                      <li>&ndash; Having a group <em>chat</em>/text, Facebook group or other channel for communication between Meetup participants can facilitate information sharing and further discussion.</li>
+                    </ul>
+                    <ul>
+                      <li>&ndash; Make it fun. Including snacks, desserts or a potluck can be a fun way to encourage members to keep coming back. Find the fun that works best for your group.</li>
+                      <li>&ndash; There is no predetermined number of Meetups. Groups grow and evolve, sometimes finding new subjects to cover or reviewing previously discussed material that is relevant to current events. You can meet as often as you&rsquo;d like for as long as you&rsquo;d like.</li>
+                    </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading6" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse6" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse6"> MORE INFORMATION </a></h4>
+               </div>
+               <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                  <div class="panel-body">
+                     <p>If you have received your book and have copies of the pocket Constitution for your guests, you are almost ready to host your first Madison Meetup!
+If you did not purchase through us you can download the Series 1 brochure below to guide your group through the Declaration of Independence.  And remember, these are serious documents but you can still have fun!</p>
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading7" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse7" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse7"> DOWNLOAD MATERIALS </a></h4>
+               </div>
+               <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+                  <div class="panel-body">
+                     <p><a href="/media/files/files/b26facb2/mm-pamphlet.pdf">Madison Meetup Series 1 (The Declaration of Independence)</a></p>
+                    <p><a href="/media/files/files/080aca84/madison-meetup-intive.jpg">Madison Meetup &nbsp;Series 1 Invitation &ndash; For digital use</a></p>
+                    <p><a href="/media/files/files/ce006e9a/mm-invite-2up.pdf">Madison Meetup &nbsp;Series 1 Invitation &ndash; 2 per page for printing out and sharing</a></p>
+                    <p>&nbsp;</p>
+                    <p>Madison Meetup Series 2 (The Constitution of the United States of America) &ndash; <em>Coming Soon</em></p>
+                    <p><em>Madison Meetup Series 2 Invitation &ndash; For digital use &ndash;&nbsp;Coming Soon</em></p>
+                    <p><em>Madison Meetup&nbsp;Series 2 Invitation &ndash; 2 per page for&nbsp;printing out and sharing &ndash; Coming Soon&nbsp;</em></p>
+                    <p><em>&nbsp;</em></p>
+                    <p><em>*Each participant will need a copy of the&nbsp;Declaration of Independence &amp; Constitution and each facilitator will need a copy of &ldquo;How to Read the Declaration of Independence and Constitution&rdquo; by Paul Skousen</em></p>
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div id="heading8" class="panel-heading" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" href="#collapse8" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapse8"> ADDITIONAL ITEMS/LINKS </a></h4>
+               </div>
+               <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+                  <div class="panel-body">
+                    <p>Here are resources that we have found helpful but not necessary when discussing the founding documents.</p><p><a href="https://www.amazon.com/Making-America-Substance-Meaning-Constitution/dp/0880800178/ref=tmm_hrd_swatch_0?_encoding=UTF8&amp;qid=&amp;sr=">The Making of America</a>&nbsp;by W. Cleon Skousen</p>
+                  </div>
+               </div>
+            </div>
+          </div><!-- end accordion -->
+      </div>
+          
+        <div class="info-bottom">
+          If you have questions on how to host your first Madison Meetup please email us at <a href="#">info@momsforliberty.org</a>.  We are happy to help you get started! If you would like to purchase a Madison Meetup Starter Kit, please visit our <a href="#">Store</a>.  
+<br/><br/>
+          Your starter kit includes:<br/>
+– (1) “How to Read the Declaration of Independence and Constitution” by Paul Skousen<br/>
+– (10) Pocket Constitutions <br/>
+– (1) Moms for Liberty Brochure Guide<br/>
+   Cost $30<br/><br/>
+        </div>
+          
+        <div style="clear:both;display:block;">  {% include "pages/meta.html" %}   </div>
+        
+        </div><!-- end .page-wrap -->
+        
+      </div><!-- end .t -->
+    
+      {% endblock custom_body %}
+      
+    </div> <!-- close content -->
+    
+  </div> <!-- close container -->
+</div> <!-- close page-top -->
+
+<footer class="bg-primary {% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}

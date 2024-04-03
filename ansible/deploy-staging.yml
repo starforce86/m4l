@@ -1,0 +1,9 @@
+---
+- name: Deploy MomsForLiberty Website
+  hosts: staging
+  become: true
+  gather_facts: true
+  environment:
+    OP_CONNECT_TOKEN: "{{lookup('env', 'OP_CONNECT_TOKEN', default='nope')}}"
+  roles:
+    - momsforliberty

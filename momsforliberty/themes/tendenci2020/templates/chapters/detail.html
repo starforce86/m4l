@@ -1,0 +1,347 @@
+{% extends "default-chapter-custom.html" %}
+{% load base_tags %}
+{% load chapter_tags %}
+{% load event_tags %}
+{% load event_filters %}
+{% load photo_tags %}
+{% load photo_filters %}
+{% load news_tags %}
+{% load forms_tags %}
+{% load file_tags %}
+{% load profile_tags %}
+{% load profile_filters %}
+{% load video_tags %}
+{% load video_filters %}
+{% block content %}
+
+   <div class="chapter-wrap">
+     
+      <!-- chapter title & Featured image in default-chapter-custom.html -->
+     
+      <div class="chapter-officers row">
+       
+         <h2 class="chpt-sub-ttl text-center">Chapter Leadership</h2>
+         {% if officers %}
+      <div id="officer-table" class="table" style="word-break: break-word;">
+        
+        {% for officer in officers %}
+       <div id="officer-table-block">
+        <div>{% gravatar officer.user 128 %}</div><!-- profile img -->
+        <br />
+          <div class="officer-name">
+              <a href="{% url 'profile' officer.user.username  %}">
+                {% if officer.user.get_full_name %}
+                {{ officer.user.get_full_name }}
+                {% else %}
+                {{ officer.user }}
+                {% endif %}
+              </a>
+          </div>
+        
+        <div class="officer-position">{{ officer.position }}</div>
+       
+        {% if show_officers_phone %}
+        <div class="officer-phone">{% if officer.phone %}{{ officer.phone }}{% endif %}</div>
+        {% endif %}
+        {% if show_officers_email %}
+        <div class="officer-phone">{% if officer.email %}{{ officer.email }}{% endif %}</div>
+        {% endif %}
+         
+         </div><!-- end #officer-table-block -->
+        <br />
+        {% endfor %}
+         {% else %}<div class="h4 text-center"> Our team leaders coming soon.</div>
+      </div><!-- end #officer-table -->
+      {% endif %}
+      </div><!-- end .chapter-officers -->
+     
+      <!-- {% comment %}
+         <div class="chapter-mission">
+           {{ chapter.mission|safe }}
+         </div>
+         {% endcomment %} -->
+      <div class="chapter-content">
+         {{ chapter.content|safe }}
+      </div>
+      <div id="chapt-photos" class="clearfix" >
+         <h2 class="chpt-sub-ttl text-center"><a id="photos-chapter"></a>Photos</h2>
+         <div class="panel" style="border: 1px solid #ccc;">
+            {% list_photo_sets as photo_sets_list group=chapter.group.id user=request.user %}
+            <div id="chapt-photo-slider" class="carousel carousel-photomove slide">
+               <!-- begin: carousel-inner -->   
+               <div class="carousel-inner" id="rotator_inner">
+                  <!-- <ul id="chpt-photo-list" class="list-inline"> -->
+                  {% for photo_set in photo_sets_list %}
+                  {% with photo_set|get_images:request.user as photos_list %}
+                  {% for photo in photos_list %}
+                  <div class="item {% if forloop.first %} active {% endif %}">
+                     <div class="col-sm-6 col-md-3">
+                        <a href="{{ photo.get_absolute_url }}"><img alt="{{ photo.title }}" src="{% photo_image_url photo size=300x300 crop=True %}" /></a>
+                     </div>
+                  </div>
+                  <!-- end item -->
+                  <!-- {% comment %}{% empty %}<h4 class="text-center">New photos coming soon.</h4>{% endcomment %} -->
+                  {% endfor %}
+                  {% endwith %}
+                  {% endfor %}
+                  <!-- </ul> -->
+               </div>
+               <!-- end .carousel-inner -->
+               <a class="left carousel-control" href="#chapt-photo-slider" role="button" data-slide="prev">
+               <span class="glyphicon glyphicon-menu-left"></span>
+               <span class="sr-only">Previous</span>
+               </a>
+               <a class="right carousel-control" href="#chapt-photo-slider" role="button" data-slide="next">
+               <span class="glyphicon glyphicon-menu-right"></span>
+               <span class="sr-only">Next</span>
+               </a> 
+            </div>
+            <!-- end: #chapt-photo-slider -->   
+            <br>
+            <div class="panel-footer" style="clear: both;background-color: #152d53;">
+               <nav aria-label="back to news">
+                  <ul class="pager" style="margin: 0;">
+                     <li class="next" data-aos="fade-right" data-aos-duration="4000"><a sytle="color:#fff;" href="/photos/">Explore Albums<span aria-hidden="true"> &rarr;</span></a></li>
+                  </ul>
+               </nav>
+            </div>
+            <!-- end .panel-footer -->
+         </div>
+         <!-- end .panel -->
+      </div>
+      <!-- end #chapt-photos -->
+      <div class="chapters-vid clearfix">
+         <h2 class="text-center" style="margin-top:0;"><a id="videos-chapter"></a>Videos</h2>
+         <div style="border:1px solid #ccc;">
+            {% list_videos as videos_list group=chapter.group.id limit=999 random=true %} 
+            <div id="chapt-videos-slider" class="carousel carousel-videomove slide">
+               <div class="carousel-inner" id="rotator_inner">
+                  <!-- <ul id="video-urls" class="list-inline"> -->
+                  {% for video in videos_list %}   
+                  <div class="item {% if forloop.first %} active {% endif %}">
+                     <div class="col-sm-6 col-md-3">
+                        <a href="{{ video.get_absolute_url }}" class="embed-responsive embed-responsive-4by3">{{ video|video_embed:"600" }}</a>
+                     </div>
+                  </div>
+                  {% endfor %}  
+                  <!--  </ul> --> 
+               </div>
+               <!-- end carousel-inner -->
+               <a class="left carousel-control" href="#chapt-videos-slider" role="button" data-slide="prev">
+               <span class="glyphicon glyphicon-menu-left"></span>
+               <span class="sr-only">Previous</span>
+               </a>
+               <a class="right carousel-control" href="#chapt-videos-slider" role="button" data-slide="next">
+               <span class="glyphicon glyphicon-menu-right"></span>
+               <span class="sr-only">Next</span>
+               </a>
+            </div>
+            <div class="panel-footer" style="clear: both;background-color: #152d53;">
+               <nav aria-label="back to news">
+                  <ul class="pager" style="margin: 0;">
+                     <li class="next" data-aos="fade-right" data-aos-duration="4000">
+                        <a sytle="color:#fff;" href="/videos/">Explore Videos<span aria-hidden="true"> &rarr;</span></a>
+                     </li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+        </div>
+        <!-- end chapter media files -->
+         <div id="side-event-list" class="clearfix">
+            <h2 class="chpt-sub-ttl text-center"><a id="events-chapter"></a>Upcoming Events</h2>
+            <div class="panel" style="border: 1px solid #ccc;">
+               {% list_events as events_list group=chapter.group.id limit=3 order='current_and_upcoming' %}
+               <ul class="side-event list-inline" style="margin:0;overflow:hidden;">
+                  {% if events_list %}
+                  {% for event in events_list %}
+                  <li class="col-sm-4 col-xs-6">
+                     {% if event.image %}
+                     <div class="img-overlay">
+                        <img class="img-responsive" alt="{{ event.title }}" src="{% image_url event.image size=705x350 crop=true %}"/>
+                     </div>
+                     {% else %}
+                     <div class="img-overlay">
+                        <img class="img-responsive" alt="{{ event.title }}" src="/media/files/files/c1756fdd/event-filler-img.jpg" height="350" width="705" style="border: 1px solid #ccc;"/>
+                     </div>
+                     {% endif %}
+                     <h4><a href="/events/search/?event_group={{chapter.group.id}}">{{ event.title }}</a></h4>
+                     <p>{{ event.start_dt }}</p>
+                  </li>
+                  {% endfor %}
+                  {% else %}
+                  <h4 class="text-center">New event listings coming soon.</h4>
+                  {% endif %}
+               </ul>
+               <!-- end: side-event -->
+               <br />
+               <div class="panel-footer" style="clear: both;background-color: #152d53;margin-left:-11px;margin-right:-11px;">
+                  <nav aria-label="back to news">
+                     <ul class="pager" style="margin: 0;">
+                        <li class="next"><a sytle="color:#fff;" href="/events/search/?event_group={{chapter.group.id}}" data-aos="fade-in" data-aos-duration="4000">Explore Events<span aria-hidden="true"> &rarr;</span></a></li>
+                     </ul>
+                  </nav>
+               </div>
+            </div><!--end .panel-->
+         </div>
+         <!-- end: side-event-list -->
+      
+      <div class="news-list">
+         <h2 class="text-center"><a id="press-chapter"></a>{% trans 'Press' %}</h2>
+         <div class="panel" style="margin: 0; padding: 0;border: 1px solid #ccc;">
+            <!-- begin: news-innerblock -->
+            <div class="news-innerblock panel-heading" style="margin: 0; padding: 0;">
+               {% list_news as news_list limit=9 group=chapter.group.id %}
+               <ul class="list-group" style="margin:0; padding:0; display:flex; flex-wrap:wrap;">
+                  {% for news_item in news_list %}
+                  <li class="list-group-item col-sm-4">
+                     <a href="{{ news_item.get_absolute_url }}">
+                        <h3>{{ news_item.headline|striptags|safe|truncatechars:"80" }}</h3>
+                        <p style="font-weight: 400;">
+                           {% if news_item.summary %}
+                           {{ news_item.summary|striptags|truncatechars:100|safe }}
+                           {% else %}
+                           {{ news_item.body|striptags|truncatechars:100|safe }}
+                           {% endif %}
+                        </p>
+                     </a>
+                  </li>
+                  {% empty %}
+                  <h4 class="text-center" style="margin:25px auto;text-align:center;">News press listings coming soon.</h4>
+                  {% endfor %}
+               </ul>
+            </div>
+            <!--end: news-innerblock-->
+            <div class="panel-footer" style="clear: both;background-color: #152d53;">
+               <nav aria-label="back to news">
+                  <ul class="pager" style="margin: 0;">
+                     <li class="next" data-aos="fade-right" data-aos-duration="4000"><a sytle="color:#fff;" href="/news-press/">More News<span aria-hidden="true"> &rarr;</span></a></li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+      </div>
+      <!-- end news -->
+      <div class="chapter-files">
+         {% if files %}
+         <h2 class="chpt-sub-ttl text-center"><a id="resources-chapter"></a>Resources &amp; Issues</h2>
+         {% list_files as files_list limit=10 group=chapter.group.id %}
+         <ul class="file-list">
+            {% for file in files %}
+            <li class="file-list">
+               <a href="{% url "file" file.pk %}">{{ file.get_name }}&nbsp;<i class="fa fa-download" aria-hidden="true"></i></a>
+            </li>
+            {% endfor %}
+         </ul>
+         <br />
+         {% endif %}
+         {% if admin %}
+         <a class="btn btn-default" style="margin:auto;display:table;" href="{% url "file.add" %}">Add a File</a>
+         {% endif %}
+      </div><!--end chapter-files-->
+      <br />
+      <div id="chapter-join-container">
+         <!-- /forms/join-corpus-christi-chapter/ -->
+         <div class="liberty-profile-badge" data-aos="fade-right" data-aos-duration="4000">
+            <img src="/files/104/" alt="liberty join chapter badge">
+         </div>
+         <!-- animate__animated animate__rotateIn animate__infinite-infinite animate__slower-100000s -->
+         <div id="chapter-join" class="bg-primary" class="text-center">
+           
+           {% if MODULE_CHAPTERS_MEMBERSHIPSENABLED %}  
+           {% if not is_chapter_member %}
+             <div class="chapt-join-btn-bottom"> 
+               <div class="text-center"> 
+                 <a href="{% url 'chapters.membership_add' chapter.id %}" class="btn btn-md btn-default">{% trans 'Join this Chapter Now' %}</a>    
+               </div>  
+             </div>
+           {% endif %}
+           {% endif %} 
+           <br>
+            {% for form in chapter.group.form_set.all %}
+            <a class="btn btn-primary" href="{% url 'form_detail' form.slug %}">{{ form.title }}</a>
+            <br />
+            {% endfor %}
+            <div class="chapter-sponsors">
+               {% if chapter.sponsors %}
+               <div>{{ chapter.sponsors|safe }}</div>
+               {% endif %}
+            </div>
+            <br />
+         </div>
+         <!-- #chapter-join -->
+      </div>
+      <!-- end #chapter-join-container -->
+      <br />
+      {% if admin %}
+      {% if chapter.notes %}
+      <div class="chapter-notes">
+         <div class="h5 text-center" style="text-transform:uppercase;font-weight:700;padding:0;margin:0;">Admin Only</div>
+         <hr style="margin-top: 5px;margin-bottom: 5px;"/>
+         {{ chapter.notes|safe }}
+      </div>
+     {% endif %}
+     {% endif %}
+     {% include "chapters/meta.html" %}
+</div><!-- end chapter-wrap-->
+<br />
+{% endblock %}
+{% block extra_body %}
+{{ super.block }}  
+<script>
+   (function(){
+   // setup your carousels as you normally would using JS
+   // or via data attributes according to the documentation
+   // https://getbootstrap.com/javascript/#carousel
+   $('#chapt-photo-slider').carousel({ interval: 5000 });
+   }());
+   (function(){
+   $('.carousel-photomove .item').each(function(){
+     var itemToClone = $(this);
+   
+     for (var i=1;i<4;i++) {
+       itemToClone = itemToClone.next();
+   
+       // wrap around if at end of item collection
+       if (!itemToClone.length) {
+         itemToClone = $(this).siblings(':first');
+       }
+   
+       // grab item, clone, add marker class, add to collection
+       itemToClone.children(':first-child').clone()
+         .addClass("cloneditem-"+(i))
+         .appendTo($(this));
+     }
+   });
+   }());
+</script>
+<script>
+   (function(){
+   // setup your carousels as you normally would using JS
+   // or via data attributes according to the documentation
+   // https://getbootstrap.com/javascript/#carousel
+   $('#chapt-videos-slider').carousel({ interval: 5000 });
+   }());
+   (function(){
+   $('.carousel-videomove .item').each(function(){
+     var itemToClone = $(this);
+   
+     for (var i=1;i<4;i++) {
+       itemToClone = itemToClone.next();
+   
+       // wrap around if at end of item collection
+       if (!itemToClone.length) {
+         itemToClone = $(this).siblings(':first');
+       }
+   
+       // grab item, clone, add marker class, add to collection
+       itemToClone.children(':first-child').clone()
+         .addClass("cloneditem-"+(i))
+         .appendTo($(this));
+     }
+   });
+   }());
+</script>
+
+  
+{% endblock extra_body %}

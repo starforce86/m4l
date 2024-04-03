@@ -1,0 +1,5 @@
+---
+git_branch: staging
+
+# deploy-environment specific settings ;  ie, the staging env
+op_item_id: "{{ lookup('env', 'OP_ITEM_ID') or 'frjotju3kha3fpxmpqddhzrv3q' }}"

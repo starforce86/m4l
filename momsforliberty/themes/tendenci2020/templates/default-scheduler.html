@@ -1,0 +1,85 @@
+<!-- Tendenci Specific Load Tags (Delete as Needed)
+=========================================================== -->
+{% load base_filters %}
+{% load base_tags %}
+{% load theme_tags %}
+{% load nav_tags %}
+{% load category_tags %}
+{% load news_tags %}
+{% load perm_tags %}
+{% load bootstrap_pagination_tags %}
+{% theme_extends "base.html" %}
+
+
+<!-- Meta Tags (for optimal SEO)
+=========================================================== -->
+{% block title %}{{ block.super }} | {{ SITE_GLOBAL_SITEPRIMARYKEYWORDS }}{% endblock %}
+
+{% block meta_description %}{{ block.super }}{% endblock %}
+
+{% block meta_keywords %}{{ block.super }}, {{ SITE_GLOBAL_SITESECONDARYKEYWORDS }}{% endblock %}
+
+<!-- Start of the Body
+=========================================================== -->
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}donate-now{% endblock body_classes %}
+{% block html_body %}
+
+<!-- Header Starts
+=========================================================== -->
+{% theme_include "header.html" %}<!-- Pulls in Header Include -->
+<!-- Header Ends -->
+<div id="page-top">
+  <div class="container">
+ 
+    <div class="{% block content_classes %} col-xs-12{% endblock %}">
+      
+      {% block content_messages %}
+      {% spaceless %}{% theme_include "base/messages.html" %}{% endspaceless %}
+      {% endblock %}
+      
+      {% block custom_body %}
+      
+   
+      <div class="t">   
+        <div class="page-wrap">  
+          
+          <div class="page-hdr" style="margin-top: 25px;margin-bottom: 25px;background-color: #152d53;">
+          {% if page.header_image %}
+            <img src="{{ page.get_header_image_url }}" alt="page header" title="page header" class="img-responsive"/>
+          {% endif %}
+          {% if page.title %}       
+          <h1>{{ page.title }}</h1>      
+          {% endif %}   
+          </div>
+          
+          <div class="content">
+            <iframe src="https://momsforliberty.youcanbook.me/?noframe=true&skipHeaderFooter=true" id="ycbmiframemomsforliberty" style="width:100%;height:1000px;border:0px;background-color:transparent;" frameborder="0" allowtransparency="true"></iframe><script>window.addEventListener && window.addEventListener("message", function(event){if (event.origin === "https://momsforliberty.youcanbook.me"){document.getElementById("ycbmiframemomsforliberty").style.height = event.data + "px";}}, false);</script>
+          <div class="text-center well" style="margin: 25px 0">Schedule an Interview with the Moms for Liberty Team!<br/>
+            Moms for Liberty <br />
+             <br />
+            
+             <br />
+            </div>
+          </div>  
+          
+          {% include "pages/meta.html" %}   
+        
+        </div><!-- end .page-wrap -->
+        
+      </div><!-- end .t -->
+    
+      {% endblock custom_body %}
+      
+    </div> <!-- close content -->
+    
+  </div> <!-- close container -->
+</div> <!-- close page-top -->
+
+<footer class="bg-primary {% block footer_classes %}col-xs-12 col-sm-12 col-md-12{% endblock %}">
+  {% block footer %}
+  {% spaceless %}{% theme_include "footer.html" %}{% endspaceless %}
+  {% endblock %}
+</footer>
+
+{% endblock %}
